@@ -1,99 +1,101 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <motion.footer
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="border-t border-cyan-500/20 glass mt-24"
-    >
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+    <footer className="section-invert bg-ink mt-24 overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-10">
+        <p
+          aria-hidden
+          className="font-display text-paper/90 leading-[0.85] select-none mb-16 md:mb-20 -ml-1"
+          style={{ fontSize: 'clamp(4.5rem, 17vw, 15rem)', letterSpacing: '-0.03em' }}
+        >
+          Avoria<span className="text-venom">.</span>
+        </p>
+        <div className="grid md:grid-cols-4 gap-10 mb-16">
           <div>
-            <h3 className="text-lg font-bold glow-text mb-4">◆ AVORIA</h3>
-            <p className="text-gray-400 text-sm">Visibility. Authority. Revenue.</p>
+            <h3 className="font-mono text-sm tracking-[0.25em] uppercase font-medium mb-4 text-paper">
+              Avoria
+            </h3>
+            <p className="text-paper/60 text-sm">Websites you own. Built to earn.</p>
+            <p className="font-mono text-xs tracking-[0.15em] text-paper/40 mt-4">YUMA, AZ</p>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h4 className="font-mono text-xs tracking-[0.2em] uppercase text-venom mb-4">Services</h4>
+            <ul className="space-y-2 text-sm text-paper/60">
               <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-smooth">
-                  SEO Mastery
+                <Link href="/services" className="hover:text-paper transition-smooth">
+                  Web design &amp; development
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-smooth">
-                  Content Strategy
+                <Link href="/services" className="hover:text-paper transition-smooth">
+                  Custom web applications
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-cyan-400 transition-smooth">
-                  Conversion Optimization
+                <Link href="/services" className="hover:text-paper transition-smooth">
+                  Performance &amp; SEO
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h4 className="font-mono text-xs tracking-[0.2em] uppercase text-venom mb-4">Company</h4>
+            <ul className="space-y-2 text-sm text-paper/60">
               <li>
-                <Link href="/about" className="hover:text-cyan-400 transition-smooth">
+                <Link href="/about" className="hover:text-paper transition-smooth">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/work" className="hover:text-cyan-400 transition-smooth">
+                <Link href="/work" className="hover:text-paper transition-smooth">
                   Work
                 </Link>
               </li>
               <li>
-                <Link href="/insights" className="hover:text-cyan-400 transition-smooth">
-                  Insights
+                <Link href="/insights" className="hover:text-paper transition-smooth">
+                  Notes
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h4 className="font-mono text-xs tracking-[0.2em] uppercase text-venom mb-4">Connect</h4>
+            <ul className="space-y-2 text-sm text-paper/60">
               <li>
-                <Link href="/contact" className="hover:text-cyan-400 transition-smooth">
+                <Link href="/contact" className="hover:text-paper transition-smooth">
                   Contact
                 </Link>
               </li>
               <li>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-smooth">
-                  Twitter
+                <a href="tel:+19289163711" className="hover:text-paper transition-smooth">
+                  (928) 916-3711
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-smooth">
-                  LinkedIn
+                <a href="mailto:bowman.shiann@gmail.com" className="hover:text-paper transition-smooth">
+                  bowman.shiann@gmail.com
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>&copy; {currentYear} Avoria. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-gray-300 transition-smooth">
-              Privacy
+        <div className="border-t border-paper/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs tracking-[0.1em] text-paper/40">
+          <p>© {new Date().getFullYear()} AVORIA — HAND-CODED IN YUMA, AZ</p>
+          <p className="hidden md:block">YES, THIS SITE TOO — GO AHEAD, VIEW SOURCE · 0 TRACKERS</p>
+          <div className="flex gap-6">
+            <Link href="/privacy" className="hover:text-paper/70 transition-smooth">
+              PRIVACY
             </Link>
-            <Link href="/terms" className="hover:text-gray-300 transition-smooth">
-              Terms
+            <Link href="/terms" className="hover:text-paper/70 transition-smooth">
+              TERMS
             </Link>
           </div>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

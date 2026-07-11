@@ -2,213 +2,234 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Topo from '@/components/Topo';
+
+const principles = [
+  {
+    num: '01',
+    title: 'You own what you pay for',
+    description: 'Code, design, domain — transferred to you at launch, no strings attached.',
+  },
+  {
+    num: '02',
+    title: 'One number, no surprises',
+    description: 'Scope and price agreed before work starts. The quote is the ceiling.',
+  },
+  {
+    num: '03',
+    title: 'Hand-coded on purpose',
+    description: 'No Wix, no Squarespace, no builders. Every line exists for a reason.',
+  },
+  {
+    num: '04',
+    title: 'Built to outlast me',
+    description: 'Fast, accessible, documented — your site keeps working even if we never speak again.',
+  },
+];
+
+const timeline = [
+  {
+    label: 'THE PROBLEM',
+    event:
+      'Watched Yuma businesses get quoted $2,000–$8,000, plus retainer lock-in, for sites that should cost a fraction of that.',
+  },
+  {
+    label: 'THE BUILD',
+    event:
+      'Started hand-coding sites and apps instead — full ownership, one flat price, no recurring bill.',
+  },
+  {
+    label: 'THE PROOF',
+    event:
+      'A rescue site rebuilt from Lighthouse 52 to 97. A salon booking app for a fraction of an $8,000 quote. Real numbers, on the Work page.',
+  },
+  {
+    label: 'THE LESSON',
+    event:
+      'Running a rescue taught me organizations need real software — not spreadsheets held together with hope.',
+  },
+  {
+    label: 'TODAY',
+    event:
+      "50+ clients, a 5.0 average rating, zero refunds — because it's built right the first time.",
+  },
+];
 
 export default function About() {
-  const values = [
-    {
-      title: 'Data-Driven',
-      description: 'Every decision backed by data. No guesswork. No fluff.',
-      icon: '📊',
-    },
-    {
-      title: 'Transparent',
-      description: 'You know exactly what we\'re doing and why. Full reporting, always.',
-      icon: '🔍',
-    },
-    {
-      title: 'Results-Obsessed',
-      description: 'We succeed when you succeed. Your revenue is our scoreboard.',
-      icon: '🎯',
-    },
-    {
-      title: 'Strategic',
-      description: 'Long-term thinking. Sustainable growth. Compound returns.',
-      icon: '📈',
-    },
-  ];
-
-  const timeline = [
-    { year: 2020, event: 'Started with a simple vision: make digital strategy accessible' },
-    { year: 2021, event: 'First 10 clients hit $5M in combined revenue' },
-    { year: 2022, event: 'Developed proprietary SEO methodology' },
-    { year: 2023, event: 'Expanded to full-service agency model' },
-    { year: 2024, event: 'Became market leader in premium digital strategy' },
-    { year: 2025, event: 'Now working exclusively with high-growth businesses' },
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="min-h-96 flex items-center justify-center py-20 px-6">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 max-w-[1200px] mx-auto px-6 md:px-10">
+        <Topo accent className="pointer-events-none absolute -top-20 -right-24 w-[340px] md:w-[480px] text-viper/15" />
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl"
+          transition={{ duration: 0.4 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="glow-text">Built for Growth</span>
+          <p className="overline mb-4">About</p>
+          <h1 className="mb-6 leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+            One person. <span className="stroke-em">All in</span>.
           </h1>
-          <p className="text-xl text-gray-400">
-            We're a boutique agency dedicated to helping ambitious brands dominate their markets.
+          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+            No account managers. No juniors. The person you talk to is the person
+            who builds it.
           </p>
         </motion.div>
       </section>
 
-      {/* Story */}
-      <section className="max-w-4xl mx-auto px-6 py-24">
+      {/* The story */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
-          className="glass p-12 rounded-xl mb-24"
+          className="grid md:grid-cols-12 gap-8"
         >
-          <h2 className="text-4xl font-bold mb-8 glow-text">The Story</h2>
-          <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+          <p className="overline md:col-span-3">The Story</p>
+          <div className="md:col-span-9 space-y-6 text-lg text-ink-soft leading-relaxed max-w-3xl">
             <p>
-              Avoria was born from frustration. After years of working with traditional agencies, we saw a pattern:
-              they promised results but delivered commoditized services. They focused on vanity metrics instead of
-              actual revenue growth.
+              Avoria started with a pattern I couldn&apos;t unsee: small businesses
+              in Yuma getting quoted $2,000 to $8,000 for websites that
+              shouldn&apos;t cost anywhere near that — then locked into monthly
+              platform fees on top of it, forever.
             </p>
             <p>
-              We decided to do it differently. We built Avoria as a premium strategy firm for brands ready to think
-              bigger. We focus exclusively on measurable business outcomes. Every strategy is custom. Every dollar
-              spent is tracked.
+              So I built the opposite. Every site I ship is hand-coded, with no
+              template platform underneath it. Every project is priced once, with
+              nothing recurring after launch. And the code belongs to the client
+              from day one — no lock-in, no ransom to leave.
             </p>
             <p>
-              Today, our clients have generated over $100M in attributable revenue through our strategies. We're not
-              the biggest agency. We're the one that gets results.
+              The standard comes from an unusual place. I also direct Beauties of
+              the Beasts, a reptile rescue that has rehomed more than 300 animals,
+              and I work as a vet tech. When an intake system fails at a rescue, an
+              animal pays for it. I stopped being able to ship software that fails
+              quietly — and that carried into every client build.
             </p>
           </div>
         </motion.div>
+      </section>
 
-        {/* Values */}
+      {/* Principles */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold mb-12 glow-text">Our Values</h2>
+          <p className="overline mb-10">Principles</p>
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-8"
+            className="grid md:grid-cols-2 gap-x-12 gap-y-10"
           >
-            {values.map((value, i) => (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                className="glass p-8 rounded-xl group hover:border-cyan-400/50 transition-all"
-              >
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-cyan-400 transition-smooth">
-                  {value.title}
-                </h3>
-                <p className="text-gray-400">{value.description}</p>
+            {principles.map((p) => (
+              <motion.div key={p.num} variants={itemVariants} className="border-t border-line pt-6">
+                <p className="font-mono text-sm text-ink-faint mb-3">{p.num}</p>
+                <h3 className="text-xl mb-2">{p.title}</h3>
+                <p className="text-ink-soft">{p.description}</p>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Timeline */}
-      <section className="max-w-4xl mx-auto px-6 py-24">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold mb-12 glow-text text-center">Our Journey</h2>
-          <div className="space-y-6">
-            {timeline.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="glass p-6 rounded-lg"
-              >
-                <div className="flex gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-cyan text-dark-950 font-bold">
-                      {item.year}
-                    </div>
-                  </div>
-                  <div className="flex-1 pt-2">
-                    <p className="text-lg font-semibold">{item.event}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+      {/* The journey */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
+        <p className="overline mb-10">The Journey</p>
+        <div className="border-l border-line ml-2 space-y-10">
+          {timeline.map((item, i) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, x: -8 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.06, duration: 0.4 }}
+              viewport={{ once: true }}
+              className="pl-8 relative"
+            >
+              <span className="absolute left-[-4.5px] top-2 w-2 h-2 bg-viper" />
+              <p className="font-mono text-xs tracking-[0.2em] text-viper mb-2">{item.label}</p>
+              <p className="text-lg text-ink-soft max-w-2xl">{item.event}</p>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
-      {/* Team */}
-      <section className="max-w-4xl mx-auto px-6 py-24 text-center">
+      {/* The person */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
+          className="grid md:grid-cols-12 gap-10 items-center"
         >
-          <h2 className="text-4xl font-bold mb-8 glow-text">The Visionary Behind Avoria</h2>
-          <div className="glass p-12 rounded-xl">
-            <div className="w-32 h-32 rounded-full bg-gradient-cyan/20 border-2 border-cyan-400 mx-auto mb-6 flex items-center justify-center text-5xl">
-              👤
+          <div className="md:col-span-4">
+            <div className="aspect-square w-full max-w-[320px] frame-hard overflow-hidden mr-2 mb-2">
+              <img
+                src="/images/shiann-headshot.webp"
+                alt="Shiann Bowman"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <h3 className="text-2xl font-bold mb-2">The Founder</h3>
-            <p className="text-gray-400 mb-4">Strategy visionary with 15+ years in digital growth</p>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Built Avoria to challenge the status quo in digital strategy. Obsessed with data, results, and helping
-              ambitious brands win.
+          </div>
+          <div className="md:col-span-8">
+            <h2 className="mb-4" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
+              The person behind Avoria.
+            </h2>
+            <h3 className="text-2xl mb-2">Shiann Bowman</h3>
+            <p className="font-mono text-xs tracking-[0.15em] uppercase text-viper mb-6">
+              Web Developer · Rescue Director · Vet Tech
+            </p>
+            <p className="text-ink-soft text-lg leading-relaxed max-w-2xl">
+              Shiann builds hand-coded sites and custom applications for businesses
+              tired of paying rent on their own website — and directs Beauties of
+              the Beasts, a reptile rescue nonprofit that has rehomed 300+ animals
+              in Yuma, AZ.
             </p>
           </div>
         </motion.div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold mb-6">Let's build something great together</h2>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 rounded-lg bg-gradient-cyan text-dark-950 font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-smooth"
+      <section className="py-24 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
           >
-            Start the Conversation
-          </Link>
-        </motion.div>
+            <p className="overline mb-6">Let&apos;s build something that outlasts the invoice</p>
+            <Link
+              href="/contact"
+              className="mega-link group"
+              style={{ fontSize: 'clamp(2.75rem, 8vw, 6rem)' }}
+            >
+              Start the conversation{' '}
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-4" aria-hidden>
+                →
+              </span>
+            </Link>
+          </motion.div>
+        </div>
       </section>
     </div>
   );

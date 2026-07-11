@@ -3,178 +3,136 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Topo from '@/components/Topo';
+
+const articles = [
+  {
+    id: 1,
+    title: 'What a $295 Website Taught Me About Agency Pricing',
+    excerpt:
+      "Most small-business sites are priced like subscriptions because that's what keeps agencies fed. Here's the honest cost breakdown.",
+    category: 'Pricing',
+    readTime: '6 min',
+    date: '2026-01-15',
+  },
+  {
+    id: 2,
+    title: 'The Real Cost of Squarespace Over 3 Years',
+    excerpt:
+      '$23 a month sounds harmless. Multiply it out, add the template ceiling, and it\'s the most expensive "cheap" option there is.',
+    category: 'Ownership',
+    readTime: '5 min',
+    date: '2026-01-12',
+  },
+  {
+    id: 3,
+    title: 'From Lighthouse 52 to 97: A Migration Case Study',
+    excerpt:
+      'A real migration, step by step: what moved, what got deleted, and where the 4.8 seconds went.',
+    category: 'Performance',
+    readTime: '8 min',
+    date: '2026-01-10',
+  },
+  {
+    id: 4,
+    title: 'Why Nonprofits Get Left Behind on Software',
+    excerpt:
+      "Rescues run on spreadsheets and prayer because nobody builds for them. I run one. Here's what actually works.",
+    category: 'Nonprofit Tech',
+    readTime: '7 min',
+    date: '2026-01-08',
+  },
+  {
+    id: 5,
+    title: 'Custom App or Off-the-Shelf Tool: How to Decide',
+    excerpt: "Calendly is great until it isn't. Three signs you've outgrown the generic tool.",
+    category: 'Web Apps',
+    readTime: '6 min',
+    date: '2026-01-05',
+  },
+  {
+    id: 6,
+    title: 'What Hand-Coding Actually Buys You',
+    excerpt:
+      '"Hand-coded" isn\'t nostalgia. It\'s the difference between owning an asset and renting a layout.',
+    category: 'Web Design',
+    readTime: '6 min',
+    date: '2026-01-02',
+  },
+];
 
 export default function Insights() {
   const [email, setEmail] = useState('');
   const [subscribeSuccess, setSubscribeSuccess] = useState(false);
 
-  const articles = [
-    {
-      id: 1,
-      title: 'The Death of Traditional SEO',
-      excerpt: 'Why keyword stuffing is dead and semantic search has taken over.',
-      category: 'SEO',
-      readTime: '6 min',
-      date: '2026-01-15',
-    },
-    {
-      id: 2,
-      title: 'Content ROI: Measuring What Matters',
-      excerpt: 'A framework for calculating the true impact of your content investments.',
-      category: 'Content Strategy',
-      readTime: '8 min',
-      date: '2026-01-12',
-    },
-    {
-      id: 3,
-      title: 'The CRO Playbook for 2026',
-      excerpt: 'Proven tactics to increase conversion rates without increasing budget.',
-      category: 'Conversion',
-      readTime: '7 min',
-      date: '2026-01-10',
-    },
-    {
-      id: 4,
-      title: 'AI is Changing SEO: Here\'s How to Adapt',
-      excerpt: 'A practical guide to staying ahead as AI reshapes search.',
-      category: 'SEO',
-      readTime: '9 min',
-      date: '2026-01-08',
-    },
-    {
-      id: 5,
-      title: 'Why Your Competitors Are Winning',
-      excerpt: 'Common mistakes that hold brands back from market leadership.',
-      category: 'Strategy',
-      readTime: '5 min',
-      date: '2026-01-05',
-    },
-    {
-      id: 6,
-      title: 'Building a Content Flywheel',
-      excerpt: 'How to create content that compounds in value over time.',
-      category: 'Content Strategy',
-      readTime: '10 min',
-      date: '2026-01-02',
-    },
-  ];
-
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     setSubscribeSuccess(true);
     setEmail('');
-    setTimeout(() => setSubscribeSuccess(false), 3000);
+    setTimeout(() => setSubscribeSuccess(false), 4000);
   };
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="min-h-96 flex items-center justify-center py-20 px-6">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 max-w-[1200px] mx-auto px-6 md:px-10">
+        <Topo className="pointer-events-none absolute -top-20 -right-24 w-[340px] md:w-[480px] text-viper/15" />
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl"
+          transition={{ duration: 0.4 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="glow-text">Insights & Ideas</span> to Move Forward
+          <p className="overline mb-4">Notes</p>
+          <h1 className="mb-6 max-w-3xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+            Straight answers about <span className="stroke-em">websites</span>.
           </h1>
-          <p className="text-xl text-gray-400">
-            Thought leadership and practical strategy for digital growth
+          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+            What things really cost, why sites are slow, and when you&apos;ve
+            outgrown the off-the-shelf tool — from the person who builds the fixes.
           </p>
         </motion.div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="max-w-2xl mx-auto px-6 py-12">
-        <motion.form
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          onSubmit={handleSubscribe}
-          className="glass p-8 rounded-xl"
-        >
-          <h2 className="text-2xl font-bold mb-2">Subscribe to our newsletter</h2>
-          <p className="text-gray-400 mb-6">Get our latest insights delivered to your inbox.</p>
-          <div className="flex gap-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              required
-              className="flex-1 px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 focus:border-cyan-400 outline-none transition-smooth"
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 rounded-lg bg-gradient-cyan text-dark-950 font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-smooth"
-            >
-              Subscribe
-            </button>
-          </div>
-          {subscribeSuccess && (
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-cyan-400 text-sm mt-4"
-            >
-              ✓ Thanks for subscribing!
-            </motion.p>
-          )}
-        </motion.form>
-      </section>
-
-      {/* Articles Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid md:grid-cols-2 gap-8"
-        >
+      {/* Article list */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-16">
+        <motion.div variants={containerVariants} initial="hidden" animate="visible">
           {articles.map((article) => (
-            <motion.div
-              key={article.id}
-              variants={itemVariants}
-            >
-              <Link href={`/insights/${article.id}`}>
-                <div className="glass p-8 rounded-xl cursor-pointer group hover:border-cyan-400/50 transition-all h-full flex flex-col">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="text-xs font-semibold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded">
-                      {article.category}
-                    </span>
-                    <span className="text-xs text-gray-500">{article.readTime}</span>
-                  </div>
-
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-cyan-400 transition-smooth flex-1">
+            <motion.div key={article.id} variants={itemVariants}>
+              <Link
+                href={`/insights/${article.id}`}
+                className="group grid md:grid-cols-12 gap-3 md:gap-8 py-8 border-t border-line items-baseline"
+              >
+                <div className="md:col-span-2 font-mono text-xs tracking-[0.1em] text-ink-faint">
+                  {new Date(article.date).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                  }).toUpperCase()}
+                </div>
+                <div className="md:col-span-2 font-mono text-xs tracking-[0.15em] uppercase text-viper">
+                  {article.category}
+                </div>
+                <div className="md:col-span-7">
+                  <h2 className="text-2xl md:text-3xl mb-2 group-hover:text-viper transition-smooth">
                     {article.title}
-                  </h3>
-
-                  <p className="text-gray-400 text-sm mb-4">{article.excerpt}</p>
-
-                  <div className="text-xs text-gray-500">
-                    {new Date(article.date).toLocaleDateString()}
-                  </div>
+                  </h2>
+                  <p className="text-ink-soft text-sm">{article.excerpt}</p>
+                </div>
+                <div className="md:col-span-1 font-mono text-xs text-ink-faint md:text-right">
+                  {article.readTime}
                 </div>
               </Link>
             </motion.div>
@@ -182,25 +140,68 @@ export default function Insights() {
         </motion.div>
       </section>
 
-      {/* Reading Progress + Suggestion */}
-      <section className="py-24 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+      {/* Newsletter */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-24">
+        <motion.form
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
+          onSubmit={handleSubscribe}
+          className="border border-line bg-paper-deep p-8 md:p-12"
         >
-          <h2 className="text-4xl font-bold mb-6">Dive deeper into strategy</h2>
-          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Our insights are based on data, tested in real campaigns, and designed to give you an unfair advantage.
+          <h3 className="text-2xl mb-2">One useful note a month.</h3>
+          <p className="text-ink-soft mb-6 max-w-lg">
+            What I&apos;m learning building sites and software — no funnels, no
+            spam. Unsubscribe anytime.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 rounded-lg bg-gradient-cyan text-dark-950 font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-smooth"
+          <div className="flex flex-col sm:flex-row gap-3 max-w-lg">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              required
+              className="flex-1 px-4 py-3 bg-paper border border-line focus:border-viper outline-none transition-smooth text-ink"
+            />
+            <button type="submit" className="btn-primary !py-3">
+              Subscribe
+            </button>
+          </div>
+          {subscribeSuccess && (
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-viper text-sm mt-4 font-mono tracking-[0.05em]"
+            >
+              ✓ You&apos;re in. First note lands next month.
+            </motion.p>
+          )}
+        </motion.form>
+      </section>
+
+      {/* Closing CTA */}
+      <section className="py-24 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
           >
-            Get a Strategy Consultation
-          </Link>
-        </motion.div>
+            <p className="overline mb-6">Reading is free. So is the call.</p>
+            <Link
+              href="/contact"
+              className="mega-link group"
+              style={{ fontSize: 'clamp(2.75rem, 8vw, 6rem)' }}
+            >
+              Book the free call{' '}
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-4" aria-hidden>
+                →
+              </span>
+            </Link>
+          </motion.div>
+        </div>
       </section>
     </div>
   );

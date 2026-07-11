@@ -1,230 +1,195 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Topo from '@/components/Topo';
+
+const services = [
+  {
+    num: '01',
+    title: 'Custom web design & development',
+    description:
+      'A site built line by line for your business — no template underneath, no page builder, no monthly ransom.',
+    details: [
+      'Hand-coded — no builders, no bloat',
+      'SEO and schema markup engineered in from day one',
+      'Mobile-first, 95+ Lighthouse targets',
+      'Full code ownership at launch',
+      'One clear revision round before going live',
+      '$0/month hosting on modern infrastructure',
+    ],
+  },
+  {
+    num: '02',
+    title: 'Custom web applications',
+    description:
+      'The tool you keep wishing existed — booking systems, client portals, quote calculators — built around how you actually work.',
+    details: [
+      'Booking & scheduling tools',
+      'Client portals & dashboards',
+      'Quote calculators & intake forms',
+      "Shaped to your exact workflow, not a template's",
+      'One-time cost — no per-seat, no per-month',
+      'Most apps ship in 1–2 weeks',
+    ],
+  },
+  {
+    num: '03',
+    title: 'Performance & technical SEO',
+    description: 'Your site is slow, and Google knows it. This fixes both.',
+    details: [
+      'Full technical SEO audit with a prioritized fix list',
+      'Core Web Vitals optimization',
+      'Lighthouse scores into the 90s',
+      'Structured data & schema implementation',
+      'Site speed re-engineering',
+      'Ongoing monitoring available — never required',
+    ],
+  },
+  {
+    num: '04',
+    title: 'Migrations & replatforming',
+    description:
+      'Escape WordPress or a page builder without losing your content, your rankings, or a day of uptime.',
+    details: [
+      'WordPress/Divi to modern stack',
+      'Zero-downtime cutover planning',
+      'Content and SEO preserved through the move',
+      'Hosting cost reduction — often to $0/mo',
+      'Legacy system audit before anything moves',
+      'Full documentation handed off with the keys',
+    ],
+  },
+  {
+    num: '05',
+    title: 'Nonprofit & mission-driven technology',
+    description:
+      "Real software for organizations doing real work — built by someone who runs one. I direct a reptile rescue, so shelter intake systems and volunteer tools aren't guesses here. They're lived requirements.",
+    details: [
+      'Shelter & rescue management systems',
+      'Volunteer & intake tracking',
+      'Donor & adoption-applicant workflows',
+      'Priced for real nonprofit budgets',
+      'Role-based access & compliance reporting',
+      'Ongoing support for mission-critical tools',
+    ],
+  },
+  {
+    num: '06',
+    title: 'Ongoing strategy & support',
+    description: "Help after launch when you want it — never a contract because you're trapped.",
+    details: [
+      'Post-launch support window on every project',
+      'Content & copy updates',
+      'Analytics setup & plain-English reviews',
+      'Priority response for existing clients',
+      'Roadmap planning for new features',
+      'No long-term contract, ever',
+    ],
+  },
+];
 
 export default function Services() {
-  const [expandedService, setExpandedService] = useState<number | null>(null);
-  const [budget, setBudget] = useState(10000);
-  const projectedReturn = Math.round(budget * 3.5);
-
-  const services = [
-    {
-      title: 'SEO Strategy & Implementation',
-      description: 'Technical SEO, keyword optimization, and link building',
-      details: [
-        'Comprehensive SEO audit',
-        'On-page optimization',
-        'Technical SEO fixes',
-        'Backlink strategy',
-        'Monthly reporting',
-      ],
-      price: 'Custom',
-    },
-    {
-      title: 'Content Marketing',
-      description: 'Strategic content that ranks and converts',
-      details: [
-        'Content strategy development',
-        'Blog post creation (4/month)',
-        'Long-form guides',
-        'Content optimization',
-        'Performance tracking',
-      ],
-      price: 'Custom',
-    },
-    {
-      title: 'Conversion Rate Optimization',
-      description: 'Turn traffic into revenue',
-      details: [
-        'CRO audit',
-        'A/B testing framework',
-        'Landing page optimization',
-        'Funnel analysis',
-        'Monthly testing cycles',
-      ],
-      price: 'Custom',
-    },
-    {
-      title: 'Technical Implementation',
-      description: 'Infrastructure that supports growth',
-      details: [
-        'Website migrations',
-        'Performance optimization',
-        'Analytics setup',
-        'Tag management',
-        'Integration support',
-      ],
-      price: 'Custom',
-    },
-    {
-      title: 'Strategy Consulting',
-      description: 'Roadmap for digital dominance',
-      details: [
-        'Market analysis',
-        'Competitor research',
-        'Growth strategy',
-        'Quarterly strategy calls',
-        'Implementation support',
-      ],
-      price: 'Custom',
-    },
-    {
-      title: 'Done-With-You Services',
-      description: 'We build it, you execute it',
-      details: [
-        'Custom training',
-        'Process documentation',
-        'Template creation',
-        'Support for 90 days',
-        'Knowledge transfer',
-      ],
-      price: 'Custom',
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="min-h-96 flex items-center justify-center py-20 px-6">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 max-w-[1200px] mx-auto px-6 md:px-10">
+        <Topo className="pointer-events-none absolute -top-20 -right-24 w-[340px] md:w-[480px] text-viper/15" />
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl"
+          transition={{ duration: 0.4 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="glow-text">Services Built</span> for Scale
+          <p className="overline mb-4">Services</p>
+          <h1 className="mb-6 max-w-4xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+            Six ways in. Everything ships the same way:{' '}
+            <span className="stroke-em">yours</span>.
           </h1>
-          <p className="text-xl text-gray-400">
-            Each service is crafted to deliver measurable, sustainable growth for your business.
+          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+            Every engagement is hand-coded, priced once, and owned by you the day
+            it launches.
           </p>
         </motion.div>
       </section>
 
-      {/* Services Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid md:grid-cols-2 gap-6"
-        >
-          {services.map((service, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              onClick={() => setExpandedService(expandedService === i ? null : i)}
-              className="glass p-8 rounded-xl cursor-pointer transition-all duration-300 hover:border-cyan-400/50"
-            >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-semibold text-cyan-400">{service.title}</h3>
-                <motion.span
-                  animate={{ rotate: expandedService === i ? 180 : 0 }}
-                  className="text-2xl"
-                >
-                  ▼
-                </motion.span>
-              </div>
-
-              <p className="text-gray-400 mb-4">{service.description}</p>
-
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={expandedService === i ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ul className="space-y-2 text-sm text-gray-300 border-t border-gray-700 pt-4">
-                  {service.details.map((detail, j) => (
-                    <li key={j}>✓ {detail}</li>
-                  ))}
-                </ul>
-              </motion.div>
-            </motion.div>
-          ))}
-        </motion.div>
+      {/* Service rows */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-24">
+        {services.map((service, i) => (
+          <motion.div
+            key={service.num}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: (i % 2) * 0.05 }}
+            viewport={{ once: true }}
+            className="grid md:grid-cols-12 gap-6 md:gap-10 py-12 border-t border-line"
+          >
+            <div className="md:col-span-5">
+              <p className="ghost text-6xl md:text-7xl mb-4" aria-hidden>{service.num}</p>
+              <h2 className="text-2xl md:text-3xl mb-4">{service.title}</h2>
+              <p className="text-ink-soft leading-relaxed">{service.description}</p>
+            </div>
+            <div className="md:col-span-7 md:pt-10">
+              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-ink-soft">
+                {service.details.map((detail) => (
+                  <li key={detail} className="flex gap-3">
+                    <span className="text-viper flex-shrink-0">✓</span> {detail}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        ))}
       </section>
 
-      {/* ROI Calculator */}
-      <section className="max-w-4xl mx-auto px-6 py-24">
+      {/* Pricing block */}
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-24">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
-          className="glass p-12 rounded-xl text-center"
+          className="border border-ink p-8 md:p-14 relative"
         >
-          <h2 className="text-3xl font-bold mb-8 glow-text">ROI Calculator</h2>
-
-          <div className="mb-8">
-            <p className="text-gray-400 mb-4">Budget: ${budget.toLocaleString()}</p>
-            <input
-              type="range"
-              min="5000"
-              max="100000"
-              step="5000"
-              value={budget}
-              onChange={(e) => setBudget(Number(e.target.value))}
-              className="w-full"
-            />
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <p className="text-gray-400 text-sm mb-2">Investment</p>
-              <p className="text-3xl font-bold text-cyan-400">${budget.toLocaleString()}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-2">Projected Return (avg. 3.5x ROI)</p>
-              <p className="text-3xl font-bold text-magenta-500">${projectedReturn.toLocaleString()}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-2">Timeline</p>
-              <p className="text-3xl font-bold text-cyan-400">6-12 months</p>
-            </div>
-          </div>
-
-          <p className="text-gray-400 text-sm mt-8">*Based on historical client data. Results vary by industry and implementation.</p>
+          <div className="absolute top-0 left-0 right-0 h-1 bg-venom" />
+          <p className="overline mb-4">Pricing</p>
+          <h2 className="mb-6" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
+            What it costs.
+          </h2>
+          <p className="text-lg text-ink-soft max-w-3xl leading-relaxed">
+            Every project gets one flat number, quoted up front from your scope.
+            Simple sites land in the hundreds — not thousands. Apps are quoted the
+            same way: once. And because the invoice doesn&apos;t exist until
+            you&apos;ve approved the draft, the quote is the ceiling — not the
+            opening bid.
+          </p>
         </motion.div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold mb-6">Let's discuss your goals</h2>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 rounded-lg bg-gradient-cyan text-dark-950 font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-smooth"
+      <section className="py-24 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true }}
           >
-            Book a Strategy Call
-          </Link>
-        </motion.div>
+            <p className="overline mb-6">Next step — the call is free</p>
+            <Link
+              href="/contact"
+              className="mega-link group"
+              style={{ fontSize: 'clamp(2.75rem, 8vw, 6rem)' }}
+            >
+              Get your number{' '}
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-4" aria-hidden>
+                →
+              </span>
+            </Link>
+            <p className="font-mono text-xs tracking-[0.12em] uppercase text-ink-faint mt-10">
+              Or call/text (928) 916-3711 · Replies in under 3 hours
+            </p>
+          </motion.div>
+        </div>
       </section>
     </div>
   );

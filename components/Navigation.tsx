@@ -1,115 +1,150 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import Magnetic from '@/components/Magnetic';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [logoClicks, setLogoClicks] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
     { name: 'Work', href: '/work' },
-    { name: 'Insights', href: '/insights' },
+    { name: 'Services', href: '/services' },
+    { name: 'Notes', href: '/insights' },
     { name: 'About', href: '/about' },
   ];
 
-  const handleLogoClick = () => {
-    const newClicks = logoClicks + 1;
-    setLogoClicks(newClicks);
-    if (newClicks === 7) {
-      alert('🚀 Avoria Origin Sequence Activated');
-      setLogoClicks(0);
-    }
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 w-full z-50 glass border-b border-cyan-500/20"
+      transition={{ duration: 0.4 }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-paper/90 backdrop-blur-md border-b border-line'
+          : 'bg-transparent border-b border-transparent'
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <button
-          onClick={handleLogoClick}
-          className="text-xl font-bold glow-text cursor-pointer transition-smooth hover:scale-105"
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
+        <Link
+          href="/"
+          className="font-mono text-sm font-medium tracking-[0.25em] uppercase text-ink hover:text-viper transition-smooth"
         >
-          ◆ AVORIA
-        </button>
+          Avoria<span className="text-viper">.</span>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm text-gray-300 hover:text-cyan-400 transition-smooth relative group"
-            >
-              {item.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-cyan group-hover:w-full transition-all duration-300" />
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`font-mono text-[13px] tracking-[0.1em] uppercase transition-smooth relative group ${
+                  active ? 'text-ink' : 'text-ink-soft hover:text-ink'
+                }`}
+              >
+                {item.name}
+                <span
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-venom transition-all duration-300 ${
+                    active ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </Link>
+            );
+          })}
         </div>
 
-        <div className="flex items-center gap-4">
-          <Link
-            href="/contact"
-            className="hidden sm:block px-6 py-2 rounded-lg bg-gradient-cyan text-dark-950 font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/50 transition-smooth"
+        <div className="flex items-center gap-6">
+          <a
+            href="tel:+19289163711"
+            className="hidden lg:block font-mono text-[13px] tracking-[0.1em] text-ink-faint hover:text-ink transition-smooth"
           >
-            Book a Call
-          </Link>
+            (928) 916-3711
+          </a>
+          <Magnetic strength={0.2} className="hidden sm:inline-block">
+            <Link href="/contact" className="btn-primary !py-2.5 !px-5">
+              Book a free call
+            </Link>
+          </Magnetic>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden w-10 h-10 flex flex-col justify-center gap-1.5"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            className="md:hidden w-8 h-8 flex flex-col justify-center gap-1.5 relative z-50"
           >
             <motion.span
-              animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-cyan-400 rounded"
+              animate={isOpen ? { rotate: 45, y: 6, backgroundColor: '#F7F4ED' } : { rotate: 0, y: 0, backgroundColor: '#1B1813' }}
+              className="w-6 h-[2px] bg-ink"
             />
             <motion.span
               animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="w-6 h-0.5 bg-cyan-400 rounded"
+              className="w-6 h-[2px] bg-ink"
             />
             <motion.span
-              animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              className="w-6 h-0.5 bg-cyan-400 rounded"
+              animate={isOpen ? { rotate: -45, y: -6, backgroundColor: '#F7F4ED' } : { rotate: 0, y: 0, backgroundColor: '#1B1813' }}
+              className="w-6 h-[2px] bg-ink"
             />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={isOpen ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
-        transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden"
-      >
-        <div className="px-6 py-4 space-y-3 border-t border-cyan-500/20">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="block text-gray-300 hover:text-cyan-400 transition-smooth"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="block px-6 py-2 rounded-lg bg-gradient-cyan text-dark-950 font-semibold text-center"
-            onClick={() => setIsOpen(false)}
+      {/* Mobile Menu — full-screen ink overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed inset-0 bg-ink section-invert"
           >
-            Book a Call
-          </Link>
-        </div>
-      </motion.div>
+            <div className="h-full flex flex-col justify-center px-8 gap-8">
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.08 * i, duration: 0.3 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="font-display text-4xl text-paper hover:text-venom transition-smooth"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.3 }}
+                className="mt-6"
+              >
+                <Link href="/contact" className="btn-primary" onClick={() => setIsOpen(false)}>
+                  Book a free call
+                </Link>
+                <p className="font-mono text-[13px] text-ink-faint mt-6 tracking-[0.1em]">
+                  (928) 916-3711 · YUMA, AZ
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
