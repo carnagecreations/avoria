@@ -71,7 +71,7 @@ function SectionHeader({
       </div>
       <span
         className="ghost hidden md:block flex-shrink-0"
-        style={{ fontSize: 'clamp(4rem, 9vw, 7.5rem)' }}
+        style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}
         aria-hidden
       >
         ({index})
@@ -223,7 +223,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <h1 className="leading-[0.95] mb-8" style={{ fontSize: 'clamp(3.25rem, 10vw, 8.5rem)' }}>
+          <h1 className="leading-[1.02] mb-8" style={{ fontSize: 'clamp(2.75rem, 5.5vw, 5.5rem)' }}>
             <Reveal delay={0.05}>First you see it.</Reveal>
             <Reveal delay={0.18}>
               <span className="stroke-em">Then</span> you pay for it.
@@ -309,10 +309,10 @@ export default function Home() {
               {tickerItems.map((item) => (
                 <span
                   key={`${copy}-${item}`}
-                  className="flex items-center font-mono text-xs tracking-[0.25em] text-paper px-8"
+                  className="flex items-center gap-12 font-mono text-xs tracking-[0.25em] text-paper pr-12"
                 >
                   {item}
-                  <span className="text-venom ml-16">✦</span>
+                  <span className="text-venom" aria-hidden>✦</span>
                 </span>
               ))}
             </div>
@@ -492,7 +492,7 @@ export default function Home() {
                   step.highlight ? 'border-l-4 border-l-venom pl-4 md:pl-6 bg-paper-deep/60' : ''
                 }`}
               >
-                <span className="ghost md:col-span-2 text-6xl md:text-7xl" aria-hidden>
+                <span className="ghost md:col-span-2 text-4xl md:text-5xl pt-2" aria-hidden>
                   {step.num}
                 </span>
                 <h3 className="md:col-span-3 text-2xl md:text-3xl pt-1">{step.title}</h3>
@@ -518,7 +518,7 @@ export default function Home() {
             </p>
             <h2 className="leading-tight mb-6" style={{ fontSize: 'clamp(2.5rem, 6.5vw, 5rem)' }}>
               If the draft isn&apos;t right, you owe{' '}
-              <span className="stroke-em text-ink">nothing</span>.
+              <em className="italic text-venom">nothing</em>.
             </h2>
             <p className="text-lg text-paper/70 max-w-2xl mx-auto">
               The work carries the risk — not you. Across 50+ clients, no one has
@@ -566,10 +566,10 @@ export default function Home() {
                 variants={itemVariants}
                 className="relative border border-line bg-paper p-8 md:p-12 flex flex-col justify-between mr-2 mb-2"
               >
-                <span className="ghost absolute -top-8 left-6 text-[7rem]" aria-hidden>
+                <span className="ghost absolute -top-4 left-6 text-[5rem]" aria-hidden>
                   &ldquo;
                 </span>
-                <p className="font-display text-xl md:text-2xl leading-relaxed mb-8 text-ink relative z-10 pt-6">
+                <p className="font-display text-xl md:text-2xl leading-relaxed mb-8 text-ink relative z-10 pt-8">
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <footer className="font-mono text-xs tracking-[0.1em] uppercase text-ink-faint">
@@ -684,7 +684,7 @@ export default function Home() {
             <Link
               href="/contact"
               className="mega-link group mb-10"
-              style={{ fontSize: 'clamp(3rem, 8.5vw, 6.5rem)' }}
+              style={{ fontSize: 'clamp(2.25rem, 6vw, 4.75rem)' }}
             >
               Book the free call{' '}
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-4" aria-hidden>

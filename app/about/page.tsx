@@ -221,7 +221,7 @@ export default function About() {
             <Link
               href="/contact"
               className="mega-link group"
-              style={{ fontSize: 'clamp(2.75rem, 8vw, 6rem)' }}
+              style={{ fontSize: 'clamp(2.25rem, 6vw, 4.75rem)' }}
             >
               Start the conversation{' '}
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-4" aria-hidden>
