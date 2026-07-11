@@ -1,11 +1,9 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* NOTE: no universal reset here — Tailwind v4's preflight handles it inside
+   @layer base. An unlayered `* { margin:0; padding:0 }` would override every
+   layered spacing utility site-wide (unlayered CSS beats layered CSS). */
 
 html {
   scroll-behavior: smooth;

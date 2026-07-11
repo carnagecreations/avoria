@@ -140,20 +140,20 @@ export default function Work() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-8 md:space-y-12"
+          className="space-y-24 md:space-y-32"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, i) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
                 layout
                 onClick={() => setSelectedProject(project.id)}
-                className="group cursor-pointer grid md:grid-cols-2 gap-6 md:gap-10 items-center border-b border-line pb-8 md:pb-12"
+                className="group cursor-pointer"
               >
-                <div className="order-1">
+                <div className={`md:w-[82%] ${i % 2 === 1 ? 'md:ml-auto' : ''}`}>
                   <div className="frame-hard">
-                    <div className="aspect-video w-full overflow-hidden">
+                    <div className="aspect-[16/10] w-full overflow-hidden">
                       {project.image ? (
                         <img
                           src={project.image}
@@ -169,28 +169,30 @@ export default function Work() {
                       )}
                     </div>
                   </div>
-                </div>
-                <div className="order-2">
-                  <p className="overline mb-3">{project.category}</p>
-                  <h3 className="text-2xl md:text-3xl mb-3 group-hover:text-viper transition-smooth">
-                    {project.title}
-                  </h3>
-                  <p className="text-ink-soft mb-5">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.stack.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] tracking-[0.06em] px-3.5 py-1.5 rounded-full border border-line text-ink-faint"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between gap-4 border-t border-line pt-4">
-                    <p className="text-sm text-ink-faint">{project.client}</p>
-                    <p className="text-[13px] text-ink-soft text-right">
-                      {project.result}
-                    </p>
+                  <div className="grid md:grid-cols-12 gap-4 md:gap-8 mt-8">
+                    <div className="md:col-span-6">
+                      <p className="overline mb-3">{project.category}</p>
+                      <h3 className="text-2xl md:text-3xl group-hover:text-viper transition-smooth">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className="md:col-span-6">
+                      <p className="text-ink-soft mb-5">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {project.stack.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[11px] tracking-[0.06em] px-3.5 py-1.5 rounded-full border border-line text-ink-faint"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex items-baseline justify-between gap-4 border-t border-line pt-4">
+                        <p className="text-sm text-ink-faint">{project.client}</p>
+                        <p className="text-[13px] text-ink-soft text-right">{project.result}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
