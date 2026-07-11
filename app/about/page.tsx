@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Topo from '@/components/Topo';
 
 const principles = [
   {
@@ -72,8 +71,7 @@ export default function About() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 max-w-[1200px] mx-auto px-6 md:px-10">
-        <Topo accent className="pointer-events-none absolute -top-20 -right-24 w-[340px] md:w-[480px] text-viper/15" />
+      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -182,7 +180,7 @@ export default function About() {
           className="grid md:grid-cols-12 gap-10 items-center"
         >
           <div className="md:col-span-4">
-            <div className="aspect-square w-full max-w-[320px] frame-hard overflow-hidden mr-2 mb-2">
+            <div className="aspect-square w-full max-w-[320px] frame-hard">
               <img
                 src="/images/shiann-headshot.webp"
                 alt="Shiann Bowman"

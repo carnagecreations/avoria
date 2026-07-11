@@ -9,18 +9,18 @@ const config: Config = {
     extend: {
       colors: {
         paper: {
-          DEFAULT: '#F7F4ED',
-          deep: '#EFEAE0',
+          DEFAULT: '#FAF9F5',
+          deep: '#F1EFE8',
         },
         ink: {
-          DEFAULT: '#1B1813',
-          soft: '#57534A',
-          faint: '#8A857A',
+          DEFAULT: '#161510',
+          soft: '#6F695D',
+          faint: '#A29B8C',
         },
-        viper: '#3F6212',
-        venom: '#D4F70F',
-        clay: '#B4531F',
-        line: '#DDD6C8',
+        viper: '#2F3B24',
+        venom: '#C0A869',
+        clay: '#96552F',
+        line: '#E6E2D8',
       },
       fontFamily: {
         display: ['var(--font-display)', 'Georgia', 'serif'],

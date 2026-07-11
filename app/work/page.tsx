@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Topo from '@/components/Topo';
 
 const projects = [
   {
@@ -11,10 +10,10 @@ const projects = [
     title: 'Montijo — Service Business Website',
     category: 'Web Design',
     client: 'Montijo',
-    result: 'LIVE IN 6 DAYS · $0/MO HOSTING',
+    result: 'Live in 6 days · $0/mo hosting',
     description:
       'An agency quoted $1,800. This site went live in six days for a fraction of it — fast, professional, and owned outright by the client.',
-    stack: ['NEXT.JS', 'CLOUDFLARE PAGES', 'HAND-CODED'],
+    stack: ['Next.js', 'Cloudflare Pages', 'Hand-coded'],
     image: '/images/screenshot-montijo.webp',
   },
   {
@@ -22,10 +21,10 @@ const projects = [
     title: "Brennan's — Local Business Website",
     category: 'Web Design',
     client: "Brennan's",
-    result: '95+ LIGHTHOUSE · LEADS IN WEEK 1',
+    result: '95+ Lighthouse · leads in week 1',
     description:
       'A conversion-ready local business site — gallery, contact form, 95+ Lighthouse — pulling real leads within its first week live.',
-    stack: ['HAND-CODED', 'SEO SCHEMA', 'CONTACT PIPELINE'],
+    stack: ['Hand-coded', 'SEO schema', 'Contact pipeline'],
     image: '/images/screenshot-brennans.webp',
   },
   {
@@ -33,10 +32,10 @@ const projects = [
     title: 'Rescue Website Rebuild — Beauties of the Beasts',
     category: 'Performance',
     client: 'Beauties of the Beasts',
-    result: 'LIGHTHOUSE 52→97 · LOAD 6.2s→1.4s',
+    result: 'Lighthouse 52→97 · load 6.2s→1.4s',
     description:
       'A WordPress/Divi site that took 6.2 seconds to load, rebuilt on a modern stack: Lighthouse 52 to 97, load time to 1.4 seconds, hosting bill from ~$25/mo to $0.',
-    stack: ['WORDPRESS MIGRATION', 'CORE WEB VITALS', '$0 HOSTING'],
+    stack: ['WordPress migration', 'Core Web Vitals', '$0 hosting'],
     image: '/images/screenshot-beauties.webp',
   },
   {
@@ -44,10 +43,10 @@ const projects = [
     title: 'Salon Booking App',
     category: 'Web Apps',
     client: 'L. Castillo, Salon Owner',
-    result: 'NO-SHOW RATE DROPPED IMMEDIATELY',
+    result: 'No-show rate dropped immediately',
     description:
       'An agency quoted $8,000. The salon got a booking app shaped to its actual workflow for a fraction of that — and no-shows dropped the first week it ran.',
-    stack: ['CUSTOM APP', 'BOOKING ENGINE', 'SMS REMINDERS'],
+    stack: ['Custom app', 'Booking engine', 'SMS reminders'],
     image: null,
   },
 ];
@@ -57,7 +56,7 @@ const secretProject = {
   title: 'Beauties of the Beasts',
   category: 'Secret',
   client: "Founder's Nonprofit",
-  result: '300+ REPTILES REHOMED',
+  result: '300+ reptiles rehomed',
   description:
     'The project behind the projects. A reptile rescue that proved organizations need real software, not spreadsheets held together with hope — the lesson every build here inherits.',
 };
@@ -98,8 +97,7 @@ export default function Work() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 max-w-[1200px] mx-auto px-6 md:px-10">
-        <Topo className="pointer-events-none absolute -top-20 -right-24 w-[340px] md:w-[480px] text-viper/15" />
+      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,13 +121,13 @@ export default function Work() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`font-mono text-[13px] tracking-[0.12em] uppercase transition-smooth relative pb-1 ${
+              className={`text-[13px] font-medium transition-smooth relative pb-1 ${
                 filter === f ? 'text-ink' : 'text-ink-faint hover:text-ink'
               }`}
             >
               {f}
               {filter === f && (
-                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-venom" />
+                <span className="absolute bottom-0 left-0 w-full h-px bg-ink" />
               )}
             </button>
           ))}
@@ -153,16 +151,8 @@ export default function Work() {
                 onClick={() => setSelectedProject(project.id)}
                 className="group cursor-pointer grid md:grid-cols-2 gap-6 md:gap-10 items-center border-b border-line pb-8 md:pb-12"
               >
-                <div className="order-1 mr-2 mb-2">
-                  <div className="frame-hard bg-paper">
-                    <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-ink bg-paper-deep">
-                      <span className="w-2 h-2 rounded-full bg-clay" />
-                      <span className="w-2 h-2 rounded-full bg-venom border border-ink/20" />
-                      <span className="w-2 h-2 rounded-full bg-viper" />
-                      <span className="font-mono text-[10px] tracking-[0.12em] text-ink-faint ml-3 truncate">
-                        {project.client.toLowerCase()}
-                      </span>
-                    </div>
+                <div className="order-1">
+                  <div className="frame-hard">
                     <div className="aspect-video w-full overflow-hidden">
                       {project.image ? (
                         <img
@@ -172,8 +162,8 @@ export default function Work() {
                         />
                       ) : (
                         <div className="w-full h-full bg-paper-deep flex items-center justify-center">
-                          <span className="font-mono text-xs tracking-[0.15em] text-ink-faint">
-                            PRIVATE BUILD — SHOWN ON REQUEST
+                          <span className="text-[13px] text-ink-faint">
+                            Private build — shown on request
                           </span>
                         </div>
                       )}
@@ -190,7 +180,7 @@ export default function Work() {
                     {project.stack.map((tag) => (
                       <span
                         key={tag}
-                        className="font-mono text-[10px] tracking-[0.12em] px-3 py-1.5 border border-line text-ink-soft"
+                        className="text-[11px] tracking-[0.06em] px-3.5 py-1.5 rounded-full border border-line text-ink-faint"
                       >
                         {tag}
                       </span>
@@ -198,7 +188,7 @@ export default function Work() {
                   </div>
                   <div className="flex items-center justify-between gap-4 border-t border-line pt-4">
                     <p className="text-sm text-ink-faint">{project.client}</p>
-                    <p className="font-mono text-xs tracking-[0.08em] text-ink font-medium text-right">
+                    <p className="text-[13px] text-ink-soft text-right">
                       {project.result}
                     </p>
                   </div>
@@ -219,14 +209,14 @@ export default function Work() {
                   <span className="text-4xl opacity-60">🦎</span>
                 </div>
                 <div className="order-2">
-                  <p className="font-mono text-xs tracking-[0.2em] uppercase text-clay mb-3">Secret</p>
+                  <p className="overline mb-3">Secret</p>
                   <h3 className="text-2xl md:text-3xl mb-3 group-hover:text-clay transition-smooth">
                     {secretProject.title}
                   </h3>
                   <p className="text-ink-soft mb-6">{secretProject.description}</p>
                   <div className="flex items-center justify-between gap-4 border-t border-line pt-4">
                     <p className="text-sm text-ink-faint">{secretProject.client}</p>
-                    <p className="font-mono text-xs tracking-[0.08em] text-clay font-medium">
+                    <p className="text-[13px] text-clay">
                       {secretProject.result}
                     </p>
                   </div>

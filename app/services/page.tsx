@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Topo from '@/components/Topo';
 
 const services = [
   {
@@ -93,8 +92,7 @@ export default function Services() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 max-w-[1200px] mx-auto px-6 md:px-10">
-        <Topo className="pointer-events-none absolute -top-20 -right-24 w-[340px] md:w-[480px] text-viper/15" />
+      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,7 +122,7 @@ export default function Services() {
             className="grid md:grid-cols-12 gap-6 md:gap-10 py-12 border-t border-line"
           >
             <div className="md:col-span-5">
-              <p className="ghost text-6xl md:text-7xl mb-4" aria-hidden>{service.num}</p>
+              <p className="ghost text-5xl md:text-6xl mb-5" aria-hidden>{service.num}</p>
               <h2 className="text-2xl md:text-3xl mb-4">{service.title}</h2>
               <p className="text-ink-soft leading-relaxed">{service.description}</p>
             </div>
@@ -148,9 +146,8 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           viewport={{ once: true }}
-          className="border border-ink p-8 md:p-14 relative"
+          className="border-t border-ink pt-10 md:pt-14"
         >
-          <div className="absolute top-0 left-0 right-0 h-1 bg-venom" />
           <p className="overline mb-4">Pricing</p>
           <h2 className="mb-6" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
             What it costs.

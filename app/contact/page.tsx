@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Topo from '@/components/Topo';
 
-const needOptions = ['A NEW WEBSITE', 'A CUSTOM APP', 'A FASTER SITE', 'SOMETHING ELSE'];
+const needOptions = ['A new website', 'A custom app', 'A faster site', 'Something else'];
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -31,8 +30,7 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 max-w-[1200px] mx-auto px-6 md:px-10">
-        <Topo accent className="pointer-events-none absolute -top-20 -right-24 w-[340px] md:w-[480px] text-viper/15" />
+      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,7 +99,7 @@ export default function Contact() {
                       key={option}
                       type="button"
                       onClick={() => setFormData({ ...formData, need: option })}
-                      className={`font-mono text-[11px] tracking-[0.1em] px-4 py-2 border transition-smooth ${
+                      className={`text-[13px] px-4 py-2 rounded-full border transition-smooth ${
                         formData.need === option
                           ? 'bg-ink text-paper border-ink'
                           : 'border-line text-ink-soft hover:border-ink'

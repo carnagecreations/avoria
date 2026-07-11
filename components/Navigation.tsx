@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import Magnetic from '@/components/Magnetic';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,46 +37,42 @@ export default function Navigation() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
         <Link
           href="/"
-          className="font-mono text-sm font-medium tracking-[0.25em] uppercase text-ink hover:text-viper transition-smooth"
+          className="font-display text-xl text-ink hover:text-viper transition-smooth"
         >
-          Avoria<span className="text-viper">.</span>
+          Avoria
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8">
+        <div className="hidden md:flex gap-10">
           {navItems.map((item) => {
             const active = pathname === item.href;
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`font-mono text-[13px] tracking-[0.1em] uppercase transition-smooth relative group ${
-                  active ? 'text-ink' : 'text-ink-soft hover:text-ink'
+                className={`text-[13px] font-medium transition-smooth relative ${
+                  active ? 'text-ink' : 'text-ink-faint hover:text-ink'
                 }`}
               >
                 {item.name}
-                <span
-                  className={`absolute -bottom-1 left-0 h-[2px] bg-venom transition-all duration-300 ${
-                    active ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                />
+                {active && (
+                  <span className="absolute -bottom-1.5 left-0 w-full h-px bg-ink" />
+                )}
               </Link>
             );
           })}
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-7">
           <a
             href="tel:+19289163711"
-            className="hidden lg:block font-mono text-[13px] tracking-[0.1em] text-ink-faint hover:text-ink transition-smooth"
+            className="hidden lg:block text-[13px] text-ink-faint hover:text-ink transition-smooth"
           >
             (928) 916-3711
           </a>
-          <Magnetic strength={0.2} className="hidden sm:inline-block">
-            <Link href="/contact" className="btn-primary !py-2.5 !px-5">
-              Book a free call
-            </Link>
-          </Magnetic>
+          <Link href="/contact" className="hidden sm:inline-flex btn-primary !py-2.5 !px-6">
+            Book a free call
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -137,8 +132,8 @@ export default function Navigation() {
                 <Link href="/contact" className="btn-primary" onClick={() => setIsOpen(false)}>
                   Book a free call
                 </Link>
-                <p className="font-mono text-[13px] text-ink-faint mt-6 tracking-[0.1em]">
-                  (928) 916-3711 · YUMA, AZ
+                <p className="text-[13px] text-paper/50 mt-6">
+                  (928) 916-3711 · Yuma, AZ
                 </p>
               </motion.div>
             </div>
