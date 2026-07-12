@@ -1,2 +1,6 @@
 name = "avoria-premium-agency"
 pages_build_output_dir = "out"
+
+[[kv_namespaces]]
+binding = "LEADS"
+id = "ab1cd7f944924c81bfa23f4ec1476f7c"

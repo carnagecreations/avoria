@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'How fast will my site be live?',
-    a: 'Most websites go from first call to live in about a week: a working draft in days, one round of refinement, then launch. Custom apps usually take one to two weeks.',
+    a: 'Most websites go from first brief to live in about a week: a working draft in days, one round of refinement, then launch. Custom apps usually take one to two weeks.',
   },
   {
     q: 'Do I actually own it?',
@@ -67,8 +67,8 @@ const featuredWork = [
 const process = [
   {
     num: '01',
-    title: 'The call',
-    body: "Fifteen minutes, free, no pitch. You describe what you need; you leave with a clear scope and one flat number. If it's not a fit, you'll hear that too.",
+    title: 'The brief',
+    body: "Three quick questions on the site — under a minute, no pitch, no commitment. You describe what you need; you get back a clear scope and one flat number. If it's not a fit, you'll hear that too.",
   },
   {
     num: '02',
@@ -177,7 +177,7 @@ export default function Home() {
             >
               <Magnetic>
                 <Link href="/contact" className="btn-primary !px-10 !py-4">
-                  Book a free call
+                  Start your project
                 </Link>
               </Magnetic>
               <Link
@@ -372,7 +372,7 @@ export default function Home() {
             <p className="eyebrow mb-5">How it works</p>
             <h2 className="max-w-2xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
-                First call to launch in about a <span className="stroke-em">week</span>.
+                Brief to launch in about a <span className="stroke-em">week</span>.
               </Reveal>
             </h2>
           </div>
@@ -505,14 +505,14 @@ export default function Home() {
               Everything people ask before booking.
             </h2>
             <p className="text-ink-soft mb-8">
-              Anything else — call or text. You&apos;ll hear back within hours, from
-              the person who builds the work.
+              Anything else — send it through the form. You&apos;ll hear back within
+              hours, from the person who builds the work.
             </p>
             <a
-              href="tel:+19289163711"
+              href="/contact"
               className="text-sm font-medium text-ink hover:text-viper transition-smooth"
             >
-              (928) 916-3711 →
+              Start your project →
             </a>
           </div>
 
@@ -564,18 +564,15 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 mb-10">
               <Magnetic>
                 <Link href="/contact" className="btn-primary !px-10 !py-4">
-                  Book a free call
+                  Start your project
                 </Link>
               </Magnetic>
-              <a
-                href="tel:+19289163711"
-                className="text-sm font-medium text-ink hover:text-viper transition-smooth"
-              >
-                Or call/text (928) 916-3711
-              </a>
+              <span className="text-sm text-ink-faint">
+                Three steps, under a minute — one flat number back.
+              </span>
             </div>
             <p className="text-[13px] text-ink-faint">
-              Replies in under 3 hours, from the person who builds the work.
+              Read personally. Replies in under 3 hours.
             </p>
           </motion.div>
         </div>

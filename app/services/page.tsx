@@ -171,7 +171,7 @@ export default function Services() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <p className="eyebrow mb-6">Next step — the call is free</p>
+            <p className="eyebrow mb-6">Next step — no commitment</p>
             <Link
               href="/contact"
               className="mega-link group"
@@ -183,7 +183,7 @@ export default function Services() {
               </span>
             </Link>
             <p className="font-mono text-xs tracking-[0.12em] uppercase text-ink-faint mt-10">
-              Or call/text (928) 916-3711 · Replies in under 3 hours
+              Three steps, under a minute · One flat number back within hours
             </p>
           </motion.div>
         </div>

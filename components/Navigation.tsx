@@ -71,7 +71,7 @@ export default function Navigation() {
             (928) 916-3711
           </a>
           <Link href="/contact" className="hidden sm:inline-flex btn-primary !py-2.5 !px-6">
-            Book a free call
+            Start a project
           </Link>
 
           {/* Mobile Menu Button */}
@@ -130,7 +130,7 @@ export default function Navigation() {
                 className="mt-6"
               >
                 <Link href="/contact" className="btn-primary" onClick={() => setIsOpen(false)}>
-                  Book a free call
+                  Start a project
                 </Link>
                 <p className="text-[13px] text-paper/50 mt-6">
                   (928) 916-3711 · Yuma, AZ
