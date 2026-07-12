@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Magnetic from '@/components/Magnetic';
 
 const services = [
   {
@@ -92,98 +93,110 @@ export default function Services() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
+      <section className="relative pt-32 pb-24 md:pt-52 md:pb-40 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="eyebrow mb-4">Services</p>
-          <h1 className="mb-6 max-w-4xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+          <p className="eyebrow mb-8">Services</p>
+          <h1 className="mb-10 max-w-5xl leading-[1.05]" style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>
             Six ways in. Everything ships the same way:{' '}
             <span className="stroke-em">yours</span>.
           </h1>
-          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+          <p className="text-xl md:text-2xl text-ink-soft max-w-2xl leading-relaxed">
             Every engagement is hand-coded, priced once, and owned by you the day
             it launches.
           </p>
         </motion.div>
       </section>
 
-      {/* Service rows */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-24">
+      {/* Service rows — alternating dark sections */}
+      <section className="w-full">
         {services.map((service, i) => (
-          <motion.div
+          <motion.section
             key={service.num}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: (i % 2) * 0.05 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid md:grid-cols-12 gap-6 md:gap-10 py-12 border-t border-line"
+            className={`py-28 md:py-40 ${i % 2 === 1 ? 'section-invert bg-ink' : ''}`}
           >
-            <div className="md:col-span-5">
-              <p className="ghost text-5xl md:text-6xl mb-5" aria-hidden>{service.num}</p>
-              <h2 className="text-2xl md:text-3xl mb-4">{service.title}</h2>
-              <p className="text-ink-soft leading-relaxed">{service.description}</p>
+            <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+              <div className="grid md:grid-cols-12 gap-8 md:gap-16">
+                <div className="md:col-span-5">
+                  <p className="ghost text-7xl md:text-8xl mb-8" aria-hidden style={{ color: i % 2 === 1 ? '#C0A869' : 'currentColor' }}>
+                    {service.num}
+                  </p>
+                  <h2 className="text-3xl md:text-4xl mb-6 leading-tight">{service.title}</h2>
+                  <p className={`text-lg leading-relaxed ${i % 2 === 1 ? 'text-paper/70' : 'text-ink-soft'}`}>
+                    {service.description}
+                  </p>
+                </div>
+                <div className="md:col-span-7 md:pt-6">
+                  <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-5">
+                    {service.details.map((detail) => (
+                      <li key={detail} className={`flex gap-4 text-base leading-relaxed ${i % 2 === 1 ? 'text-paper/70' : 'text-ink-soft'}`}>
+                        <span className={`flex-shrink-0 pt-1 ${i % 2 === 1 ? 'text-venom' : 'text-viper'}`}>✓</span>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div className="md:col-span-7 md:pt-10">
-              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-ink-soft">
-                {service.details.map((detail) => (
-                  <li key={detail} className="flex gap-3">
-                    <span className="text-viper flex-shrink-0">✓</span> {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+          </motion.section>
         ))}
       </section>
 
       {/* Pricing block */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-          className="border-t border-ink pt-10 md:pt-14"
-        >
-          <p className="eyebrow mb-4">Pricing</p>
-          <h2 className="mb-6" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
-            What it costs.
-          </h2>
-          <p className="text-lg text-ink-soft max-w-3xl leading-relaxed">
-            Local agencies quote $2,000–$8,000 for this work, plus a retainer to
-            keep it alive. Here, every project gets one flat number, quoted up
-            front from your scope — simple sites land in the hundreds, not
-            thousands, and apps are quoted the same way: once. And because the
-            invoice doesn&apos;t exist until you&apos;ve approved the draft, the
-            quote is the ceiling — not the opening bid.
-          </p>
-        </motion.div>
+      <section className="py-40 md:py-56 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="eyebrow mb-10">Pricing</p>
+            <h2 className="mb-12 max-w-3xl" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.75rem)', lineHeight: 1.1 }}>
+              What it costs.
+            </h2>
+            <p className="text-xl text-ink-soft max-w-4xl leading-relaxed">
+              Local agencies quote $2,000–$8,000 for this work, plus a retainer to
+              keep it alive. Here, every project gets one flat number, quoted up
+              front from your scope — simple sites land in the hundreds, not
+              thousands, and apps are quoted the same way: once. And because the
+              invoice doesn&apos;t exist until you&apos;ve approved the draft, the
+              quote is the ceiling — not the opening bid.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 border-t border-line">
+      <section className="py-48 md:py-60 border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="eyebrow mb-6">Next step — no commitment</p>
-            <Link
-              href="/contact"
-              className="mega-link group"
-              style={{ fontSize: 'clamp(2.25rem, 6vw, 4.75rem)' }}
-            >
-              Get your number{' '}
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-4" aria-hidden>
-                →
-              </span>
-            </Link>
-            <p className="font-mono text-xs tracking-[0.12em] uppercase text-ink-faint mt-10">
+            <p className="eyebrow mb-12">Next step — no commitment</p>
+            <Magnetic>
+              <Link
+                href="/contact"
+                className="mega-link group block"
+                style={{ fontSize: 'clamp(3rem, 7.5vw, 5.5rem)', lineHeight: 1.1 }}
+              >
+                Get your number{' '}
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-6" aria-hidden>
+                  →
+                </span>
+              </Link>
+            </Magnetic>
+            <p className="font-mono text-sm tracking-[0.12em] uppercase text-ink-faint mt-16">
               Three steps, under a minute · One flat number back within hours
             </p>
           </motion.div>
