@@ -277,16 +277,16 @@ export default function Home() {
       </section>
 
       {/* ============ OWN VS RENT ============ */}
-      <section className="py-28 md:py-40">
+      <section className="py-40 md:py-56">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-          <div className="max-w-2xl mb-16 md:mb-24">
-            <p className="eyebrow mb-5">The math</p>
-            <h2 className="mb-6" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
+          <div className="max-w-3xl mb-24 md:mb-32">
+            <p className="eyebrow mb-8">The math</p>
+            <h2 className="mb-8" style={{ fontSize: 'clamp(2.75rem, 6.5vw, 5.5rem)', lineHeight: 1.05 }}>
               <Reveal>
-                Renting a website is the most expensive way to have one.
+                Renting a website is the most <span className="stroke-em">expensive</span> way to have one.
               </Reveal>
             </h2>
-            <p className="text-ink-soft text-lg">
+            <p className="text-ink-soft text-xl leading-relaxed max-w-2xl">
               The builder ad says $23 a month. The math says four figures every
               three years, forever — for a template your competitors are also using.
             </p>
@@ -371,11 +371,11 @@ export default function Home() {
       </section>
 
       {/* ============ PROCESS — stacking cards ============ */}
-      <section className="py-28 md:py-40 border-t border-line">
+      <section className="py-40 md:py-56 border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-          <div className="mb-16 md:mb-20">
-            <p className="eyebrow mb-5">How it works</p>
-            <h2 className="max-w-2xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
+          <div className="mb-24 md:mb-32">
+            <p className="eyebrow mb-8">How it works</p>
+            <h2 className="max-w-3xl" style={{ fontSize: 'clamp(2.75rem, 6.5vw, 5.5rem)', lineHeight: 1.05 }}>
               <Reveal>
                 Brief to launch in about a <span className="stroke-em">week</span>.
               </Reveal>
@@ -405,23 +405,23 @@ export default function Home() {
       </section>
 
       {/* ============ GUARANTEE ============ */}
-      <section className="section-invert bg-ink py-32 md:py-44 relative overflow-hidden">
+      <section className="section-invert bg-ink py-44 md:py-60 relative overflow-hidden">
         <Topo className="pointer-events-none absolute -bottom-40 -right-40 w-[560px] md:w-[720px] text-paper/[0.05]" />
-        <div className="max-w-[900px] mx-auto px-6 md:px-10 text-center relative z-10">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-10 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: easing }}
           >
-            <p className="eyebrow mb-8" style={{ color: '#C0A869' }}>
+            <p className="eyebrow mb-12" style={{ color: '#C0A869' }}>
               The guarantee
             </p>
-            <h2 className="mb-8" style={{ fontSize: 'clamp(2.75rem, 7.5vw, 6.25rem)', lineHeight: 1.05 }}>
+            <h2 className="mb-12" style={{ fontSize: 'clamp(3rem, 8vw, 6.75rem)', lineHeight: 1.05 }}>
               If the draft isn&apos;t right, you owe{' '}
               <span className="stroke-em">nothing</span>.
             </h2>
-            <p className="text-lg text-paper/60 max-w-xl mx-auto">
+            <p className="text-xl text-paper/60 max-w-2xl mx-auto leading-relaxed">
               The work carries the risk — not you. Across 50+ clients, no one has
               ever walked away from a draft, and no one has ever asked for a refund.
             </p>
@@ -430,20 +430,20 @@ export default function Home() {
       </section>
 
       {/* ============ TESTIMONIALS — staggered ============ */}
-      <section className="py-28 md:py-40">
+      <section className="py-40 md:py-56 border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-          <p className="eyebrow mb-16">Client words</p>
-          <div className="space-y-16 md:space-y-24">
+          <p className="eyebrow mb-20 md:mb-28">Client words</p>
+          <div className="space-y-20 md:space-y-32">
             <motion.blockquote
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: easing }}
-              className="max-w-3xl"
+              className="max-w-4xl"
             >
               <p
-                className="font-display text-ink mb-8"
-                style={{ fontSize: 'clamp(1.6rem, 3.4vw, 2.5rem)', lineHeight: 1.4 }}
+                className="font-display text-ink mb-10"
+                style={{ fontSize: 'clamp(2rem, 4.2vw, 3.5rem)', lineHeight: 1.3 }}
               >
                 &ldquo;I&apos;d been putting off a website for two years because of the
                 price… now I have something better than anything my competitors have.
@@ -457,11 +457,11 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: easing }}
-              className="max-w-3xl md:ml-auto md:text-right"
+              className="max-w-4xl md:ml-auto md:text-right"
             >
               <p
-                className="font-display text-ink mb-8"
-                style={{ fontSize: 'clamp(1.6rem, 3.4vw, 2.5rem)', lineHeight: 1.4 }}
+                className="font-display text-ink mb-10"
+                style={{ fontSize: 'clamp(2rem, 4.2vw, 3.5rem)', lineHeight: 1.3 }}
               >
                 &ldquo;I needed a booking app for my salon and got quoted $8,000 by an
                 agency. I got exactly what I needed for a fraction of that… my no-show
@@ -472,44 +472,44 @@ export default function Home() {
           </div>
 
           {/* Count-up stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-24 pt-12 border-t border-line text-center md:text-left">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mt-32 pt-16 border-t border-line text-center md:text-left">
             <div>
-              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+              <div className="font-display text-5xl md:text-6xl text-ink mb-3">
                 <CountUp value={50} suffix="+" />
               </div>
-              <p className="text-[13px] text-ink-faint">Happy clients</p>
+              <p className="text-sm text-ink-faint">Happy clients</p>
             </div>
             <div>
-              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+              <div className="font-display text-5xl md:text-6xl text-ink mb-3">
                 <CountUp value={5.0} decimals={1} suffix="★" />
               </div>
-              <p className="text-[13px] text-ink-faint">Average rating</p>
+              <p className="text-sm text-ink-faint">Average rating</p>
             </div>
             <div>
-              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+              <div className="font-display text-5xl md:text-6xl text-ink mb-3">
                 <CountUp value={3} prefix="<" suffix="hr" />
               </div>
-              <p className="text-[13px] text-ink-faint">Avg. response</p>
+              <p className="text-sm text-ink-faint">Avg. response</p>
             </div>
             <div>
-              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+              <div className="font-display text-5xl md:text-6xl text-ink mb-3">
                 <CountUp value={0} />
               </div>
-              <p className="text-[13px] text-ink-faint">Refunds requested</p>
+              <p className="text-sm text-ink-faint">Refunds requested</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ============ FAQ ============ */}
-      <section className="py-28 md:py-40 border-t border-line">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10 grid lg:grid-cols-5 gap-16">
+      <section className="py-40 md:py-56 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10 grid lg:grid-cols-5 gap-20 md:gap-24">
           <div className="lg:col-span-2">
-            <p className="eyebrow mb-5">Questions</p>
-            <h2 className="mb-6" style={{ fontSize: 'clamp(1.7rem, 3.2vw, 2.4rem)' }}>
+            <p className="eyebrow mb-8">Questions</p>
+            <h2 className="mb-8" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: 1.1 }}>
               Everything people ask before booking.
             </h2>
-            <p className="text-ink-soft mb-8">
+            <p className="text-ink-soft text-lg mb-10 leading-relaxed">
               Anything else — send it through the form. You&apos;ll hear back within
               hours, from the person who builds the work.
             </p>
@@ -553,30 +553,30 @@ export default function Home() {
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="py-32 md:py-48 border-t border-line relative overflow-hidden">
-        <div className="max-w-[900px] mx-auto px-6 md:px-10 text-center relative z-10">
+      <section className="py-44 md:py-60 border-t border-line relative overflow-hidden">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-10 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: easing }}
           >
-            <p className="eyebrow mb-8">Next step</p>
-            <h2 className="mb-12" style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)', lineHeight: 1.12 }}>
+            <p className="eyebrow mb-12">Next step</p>
+            <h2 className="mb-16" style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 1.1 }}>
               The call costs nothing. The draft costs nothing until you approve it.
               The only risk is <span className="stroke-em">keeping the site you have</span>.
             </h2>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-8 mb-12">
               <Magnetic>
-                <Link href="/contact" className="btn-primary !px-10 !py-4">
+                <Link href="/contact" className="btn-primary !px-12 !py-5 text-base">
                   Start your project
                 </Link>
               </Magnetic>
-              <span className="text-sm text-ink-faint">
+              <span className="text-base text-ink-faint">
                 Three steps, under a minute — one flat number back.
               </span>
             </div>
-            <p className="text-[13px] text-ink-faint">
+            <p className="text-sm text-ink-faint">
               Read personally. Replies in under 3 hours.
             </p>
           </motion.div>
