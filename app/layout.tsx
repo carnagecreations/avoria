@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
 import Cursor from "@/components/Cursor";
 import SmoothScroll from "@/components/SmoothScroll";
+import Preloader from "@/components/Preloader";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <MotionProvider>
+          <Preloader />
           <SmoothScroll />
           <Cursor />
           <Navigation />

@@ -1,10 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Topo from '@/components/Topo';
 import Reveal from '@/components/Reveal';
+import ContourField from '@/components/ContourField';
+import Marquee from '@/components/Marquee';
+import CountUp from '@/components/CountUp';
+import Magnetic from '@/components/Magnetic';
 
 const faqs = [
   {
@@ -83,6 +87,15 @@ const process = [
   },
 ];
 
+const tickerItems = [
+  '5.0★ Google rating',
+  '50+ clients served',
+  'Zero refunds ever requested',
+  'Replies under 3 hours',
+  'Pay only after you approve',
+  '$0/mo hosting',
+];
+
 const easing: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export default function Home() {
@@ -90,16 +103,28 @@ export default function Home() {
   const [monthlyCost, setMonthlyCost] = useState(49);
   const threeYearCost = monthlyCost * 36;
 
+  // Horizontal gallery: vertical scroll drives horizontal glide
+  const galleryRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: galleryRef,
+    offset: ['start start', 'end end'],
+  });
+  const galleryX = useTransform(scrollYProgress, [0, 1], ['2%', '-66%']);
+
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* ============ HERO — full-viewport typographic poster ============ */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-24">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full">
+      {/* ============ HERO — interactive contour field ============ */}
+      <section className="relative min-h-screen flex flex-col justify-center pt-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <ContourField />
+        </div>
+
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 w-full pb-28">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -109,7 +134,7 @@ export default function Home() {
             Avoria — Web design studio · Yuma, AZ
           </motion.p>
 
-          <h1 className="mb-14" style={{ fontSize: 'clamp(3.1rem, 8.5vw, 8rem)', lineHeight: 0.98 }}>
+          <h1 style={{ fontSize: 'clamp(3rem, 8.5vw, 8rem)', lineHeight: 0.98 }}>
             <span className="block overflow-hidden pb-[0.08em]">
               <motion.span
                 className="block"
@@ -120,7 +145,7 @@ export default function Home() {
                 First you see it.
               </motion.span>
             </span>
-            <span className="block overflow-hidden pb-[0.12em]">
+            <span className="block overflow-hidden pb-[0.12em] md:pl-[14%]">
               <motion.span
                 className="block"
                 initial={{ opacity: 0, y: 90 }}
@@ -132,7 +157,7 @@ export default function Home() {
             </span>
           </h1>
 
-          <div className="grid md:grid-cols-12 gap-8 items-end">
+          <div className="grid md:grid-cols-12 gap-8 items-end mt-14">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -150,9 +175,11 @@ export default function Home() {
               transition={{ delay: 0.7, duration: 0.9, ease: easing }}
               className="md:col-span-6 flex flex-col sm:flex-row sm:items-center md:justify-end gap-6"
             >
-              <Link href="/contact" className="btn-primary !px-10 !py-4">
-                Book a free call
-              </Link>
+              <Magnetic>
+                <Link href="/contact" className="btn-primary !px-10 !py-4">
+                  Book a free call
+                </Link>
+              </Magnetic>
               <Link
                 href="/work"
                 className="text-sm font-medium text-ink hover:text-viper transition-smooth"
@@ -163,89 +190,89 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Quiet proof row pinned to hero base */}
+        {/* Velocity ticker pinned to hero base */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1, ease: easing }}
-          className="max-w-[1200px] mx-auto px-6 md:px-10 w-full mt-auto pb-10 pt-16"
+          transition={{ delay: 0.9, duration: 1 }}
+          className="absolute bottom-0 left-0 right-0 z-10 border-y border-line bg-paper/60 backdrop-blur-sm"
         >
-          <div className="border-t border-line pt-6 flex flex-wrap gap-x-12 gap-y-3 text-[13px] text-ink-faint">
-            <span><span className="text-ink">5.0★</span>&ensp;Google rating</span>
-            <span><span className="text-ink">50+</span>&ensp;clients served</span>
-            <span><span className="text-ink">Zero</span>&ensp;refunds ever requested</span>
-            <span>Replies&ensp;<span className="text-ink">under 3 hours</span></span>
-          </div>
+          <Marquee className="py-4">
+            {tickerItems.map((item) => (
+              <span
+                key={item}
+                className="font-mono text-[11px] tracking-[0.25em] uppercase text-ink-soft px-8 inline-flex items-center gap-8"
+              >
+                {item}
+                <span className="text-viper" aria-hidden>✦</span>
+              </span>
+            ))}
+          </Marquee>
         </motion.div>
       </section>
 
-      {/* ============ SELECTED WORK — dark gallery ============ */}
-      <section className="section-invert bg-ink py-28 md:py-44">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-          <div className="mb-20 md:mb-32 max-w-[1200px] mx-auto">
-            <p className="eyebrow mb-6">Selected work</p>
-            <h2 className="max-w-3xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
-              <Reveal>
+      {/* ============ WORK — horizontal scroll gallery ============ */}
+      <section ref={galleryRef} className="relative h-[320vh] section-invert bg-ink">
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+          <motion.div style={{ x: galleryX }} className="flex items-center gap-8 md:gap-14 pl-[6vw]">
+            {/* Intro card */}
+            <div className="flex-shrink-0 w-[80vw] md:w-[34vw]">
+              <p className="eyebrow mb-6">Selected work</p>
+              <h2 style={{ fontSize: 'clamp(2.25rem, 4.5vw, 4rem)', lineHeight: 1.05 }}>
                 Proof, with the <span className="stroke-em">numbers</span> attached.
-              </Reveal>
-            </h2>
-          </div>
+              </h2>
+              <p className="text-paper/50 mt-6 max-w-sm">
+                Scroll — the receipts move sideways.
+              </p>
+            </div>
 
-          <div className="space-y-28 md:space-y-40">
             {featuredWork.map((project, i) => (
-              <motion.div
+              <Link
                 key={project.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 1, ease: easing }}
+                href="/work"
+                className="group flex-shrink-0 w-[82vw] md:w-[52vw]"
               >
-                <Link href="/work" className="group block">
-                  <div className={`md:w-[86%] ${i % 2 === 1 ? 'md:ml-auto' : ''}`}>
-                    <div className="frame-hard">
-                      <div className="aspect-[16/10] w-full overflow-hidden">
-                        <motion.img
-                          src={project.image}
-                          alt={project.title}
-                          initial={{ scale: 1.12 }}
-                          whileInView={{ scale: 1 }}
-                          viewport={{ once: true, margin: '-10%' }}
-                          transition={{ duration: 1.6, ease: easing }}
-                          className="w-full h-full object-cover object-top"
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3 mt-8">
-                      <div className="flex items-baseline gap-5">
-                        <span className="font-mono text-xs text-paper/30">0{i + 1}</span>
-                        <div>
-                          <h3 className="text-2xl md:text-3xl text-paper group-hover:text-venom transition-smooth">
-                            {project.title}
-                          </h3>
-                          <p className="text-sm text-paper/40 mt-1">{project.tag}</p>
-                        </div>
-                      </div>
-                      <p className="text-sm text-paper/60 sm:text-right">{project.result}</p>
+                <div className="frame-hard">
+                  <div className="aspect-[16/10] w-full overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
+                    />
+                  </div>
+                </div>
+                <div className="flex items-baseline justify-between gap-6 mt-6">
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-mono text-xs text-paper/30">0{i + 1}</span>
+                    <div>
+                      <h3 className="text-xl md:text-2xl text-paper group-hover:text-venom transition-smooth">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-paper/40 mt-1">{project.tag}</p>
                     </div>
                   </div>
-                </Link>
-              </motion.div>
+                  <p className="text-sm text-paper/60 text-right">{project.result}</p>
+                </div>
+              </Link>
             ))}
-          </div>
 
-          <div className="mt-24 md:mt-32 text-center">
-            <Link
-              href="/work"
-              className="text-sm font-medium text-paper/70 hover:text-venom transition-smooth"
-            >
-              All case studies →
-            </Link>
-          </div>
+            {/* End card */}
+            <div className="flex-shrink-0 w-[70vw] md:w-[30vw] pr-[8vw]">
+              <p className="font-display text-3xl md:text-4xl text-paper mb-8">
+                Your project could be plate 04.
+              </p>
+              <Magnetic>
+                <Link href="/work" className="btn-primary">
+                  All case studies →
+                </Link>
+              </Magnetic>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ============ OWN VS RENT ============ */}
-      <section className="py-28 md:py-40 border-t border-line">
+      <section className="py-28 md:py-40">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <div className="max-w-2xl mb-16 md:mb-24">
             <p className="eyebrow mb-5">The math</p>
@@ -294,7 +321,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* ROI slider — quiet instrument */}
+          {/* ROI slider */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -338,10 +365,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ PROCESS ============ */}
+      {/* ============ PROCESS — stacking cards ============ */}
       <section className="py-28 md:py-40 border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-          <div className="mb-16 md:mb-24">
+          <div className="mb-16 md:mb-20">
             <p className="eyebrow mb-5">How it works</p>
             <h2 className="max-w-2xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
@@ -350,22 +377,23 @@ export default function Home() {
             </h2>
           </div>
 
-          <div>
+          <div className="relative">
             {process.map((step, i) => (
-              <motion.div
+              <div
                 key={step.num}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.06, ease: easing }}
-                className="grid md:grid-cols-12 gap-3 md:gap-8 py-10 md:py-12 border-t border-line"
+                className="sticky"
+                style={{ top: `calc(14vh + ${i * 4.5}rem)`, marginBottom: i === process.length - 1 ? 0 : '3rem' }}
               >
-                <p className="md:col-span-1 font-mono text-xs text-ink-faint pt-2">{step.num}</p>
-                <h3 className="md:col-span-3 text-2xl">{step.title}</h3>
-                <p className="md:col-span-6 md:col-start-6 text-ink-soft leading-relaxed">
-                  {step.body}
-                </p>
-              </motion.div>
+                <div className="bg-paper border border-line shadow-[0_-12px_40px_-20px_rgba(22,21,16,0.18)] p-8 md:p-14 min-h-[38vh] flex flex-col md:flex-row md:items-start gap-6 md:gap-14">
+                  <span className="ghost text-6xl md:text-8xl flex-shrink-0" aria-hidden>
+                    {step.num}
+                  </span>
+                  <div className="max-w-2xl">
+                    <h3 className="text-3xl md:text-4xl mb-5">{step.title}</h3>
+                    <p className="text-ink-soft text-lg leading-relaxed">{step.body}</p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -396,62 +424,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ TESTIMONIALS ============ */}
+      {/* ============ TESTIMONIALS — staggered ============ */}
       <section className="py-28 md:py-40">
-        <div className="max-w-[900px] mx-auto px-6 md:px-10">
-          <p className="eyebrow mb-16 text-center">Client words</p>
-          <div className="space-y-20 md:space-y-24">
-            {[
-              {
-                quote:
-                  "I'd been putting off a website for two years because of the price… now I have something better than anything my competitors have. No subscription. No platform. Done.",
-                who: 'T. Nguyen — Service Business Owner',
-              },
-              {
-                quote:
-                  'I needed a booking app for my salon and got quoted $8,000 by an agency. I got exactly what I needed for a fraction of that… my no-show rate dropped immediately.',
-                who: 'L. Castillo — Salon Owner',
-              },
-            ].map((t) => (
-              <motion.blockquote
-                key={t.who}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, ease: easing }}
-                className="text-center"
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <p className="eyebrow mb-16">Client words</p>
+          <div className="space-y-16 md:space-y-24">
+            <motion.blockquote
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: easing }}
+              className="max-w-3xl"
+            >
+              <p
+                className="font-display text-ink mb-8"
+                style={{ fontSize: 'clamp(1.6rem, 3.4vw, 2.5rem)', lineHeight: 1.4 }}
               >
-                <p
-                  className="font-display text-ink mb-8"
-                  style={{ fontSize: 'clamp(1.6rem, 3.4vw, 2.5rem)', lineHeight: 1.4 }}
-                >
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <footer className="text-sm text-ink-faint">{t.who}</footer>
-              </motion.blockquote>
-            ))}
+                &ldquo;I&apos;d been putting off a website for two years because of the
+                price… now I have something better than anything my competitors have.
+                No subscription. No platform. Done.&rdquo;
+              </p>
+              <footer className="text-sm text-ink-faint">T. Nguyen — Service Business Owner</footer>
+            </motion.blockquote>
+
+            <motion.blockquote
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: easing }}
+              className="max-w-3xl md:ml-auto md:text-right"
+            >
+              <p
+                className="font-display text-ink mb-8"
+                style={{ fontSize: 'clamp(1.6rem, 3.4vw, 2.5rem)', lineHeight: 1.4 }}
+              >
+                &ldquo;I needed a booking app for my salon and got quoted $8,000 by an
+                agency. I got exactly what I needed for a fraction of that… my no-show
+                rate dropped immediately.&rdquo;
+              </p>
+              <footer className="text-sm text-ink-faint">L. Castillo — Salon Owner</footer>
+            </motion.blockquote>
           </div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: easing }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-24 pt-12 border-t border-line text-center"
-          >
-            {[
-              { value: '50+', label: 'Happy clients' },
-              { value: '5.0★', label: 'Average rating' },
-              { value: '<3hr', label: 'Avg. response' },
-              { value: '0', label: 'Refunds requested' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="font-display text-3xl md:text-4xl text-ink mb-2">{stat.value}</div>
-                <p className="text-[13px] text-ink-faint">{stat.label}</p>
+          {/* Count-up stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-24 pt-12 border-t border-line text-center md:text-left">
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+                <CountUp value={50} suffix="+" />
               </div>
-            ))}
-          </motion.div>
+              <p className="text-[13px] text-ink-faint">Happy clients</p>
+            </div>
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+                <CountUp value={5.0} decimals={1} suffix="★" />
+              </div>
+              <p className="text-[13px] text-ink-faint">Average rating</p>
+            </div>
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+                <CountUp value={3} prefix="<" suffix="hr" />
+              </div>
+              <p className="text-[13px] text-ink-faint">Avg. response</p>
+            </div>
+            <div>
+              <div className="font-display text-4xl md:text-5xl text-ink mb-2">
+                <CountUp value={0} />
+              </div>
+              <p className="text-[13px] text-ink-faint">Refunds requested</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -507,8 +548,8 @@ export default function Home() {
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="py-32 md:py-48 border-t border-line">
-        <div className="max-w-[900px] mx-auto px-6 md:px-10 text-center">
+      <section className="py-32 md:py-48 border-t border-line relative overflow-hidden">
+        <div className="max-w-[900px] mx-auto px-6 md:px-10 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -521,9 +562,11 @@ export default function Home() {
               The only risk is <span className="stroke-em">keeping the site you have</span>.
             </h2>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 mb-10">
-              <Link href="/contact" className="btn-primary">
-                Book a free call
-              </Link>
+              <Magnetic>
+                <Link href="/contact" className="btn-primary !px-10 !py-4">
+                  Book a free call
+                </Link>
+              </Magnetic>
               <a
                 href="tel:+19289163711"
                 className="text-sm font-medium text-ink hover:text-viper transition-smooth"
