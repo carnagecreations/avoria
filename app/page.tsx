@@ -175,11 +175,16 @@ export default function Home() {
               transition={{ delay: 0.7, duration: 0.9, ease: easing }}
               className="md:col-span-6 flex flex-col sm:flex-row sm:items-center md:justify-end gap-6"
             >
-              <Magnetic>
-                <Link href="/contact" className="btn-primary !px-10 !py-4">
-                  Start your project
-                </Link>
-              </Magnetic>
+              <div className="flex flex-col gap-3">
+                <Magnetic>
+                  <Link href="/contact" className="btn-primary !px-10 !py-4">
+                    Start your project
+                  </Link>
+                </Magnetic>
+                <p className="text-[12px] text-ink-faint text-center">
+                  No invoice until you approve the draft.
+                </p>
+              </div>
               <Link
                 href="/work"
                 className="text-sm font-medium text-ink hover:text-viper transition-smooth"
@@ -349,7 +354,7 @@ export default function Home() {
                 </p>
               </div>
               <div>
-                <p className="eyebrow mb-2">Over 3 years</p>
+                <p className="eyebrow mb-2" style={{ color: '#96552F' }}>Gone in 3 years</p>
                 <p className="font-display text-2xl md:text-3xl text-clay">
                   ${threeYearCost.toLocaleString()}
                 </p>

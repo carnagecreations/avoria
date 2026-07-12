@@ -12,6 +12,12 @@ function json(status, body) {
   });
 }
 
+// GET /api/lead → { leads: <count> } (no lead data exposed)
+export async function onRequestGet({ env }) {
+  const list = await env.LEADS.list({ prefix: 'lead:' });
+  return json(200, { leads: list.keys.length });
+}
+
 export async function onRequestPost({ request, env }) {
   let data;
   try {

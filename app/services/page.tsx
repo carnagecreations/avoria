@@ -153,11 +153,12 @@ export default function Services() {
             What it costs.
           </h2>
           <p className="text-lg text-ink-soft max-w-3xl leading-relaxed">
-            Every project gets one flat number, quoted up front from your scope.
-            Simple sites land in the hundreds — not thousands. Apps are quoted the
-            same way: once. And because the invoice doesn&apos;t exist until
-            you&apos;ve approved the draft, the quote is the ceiling — not the
-            opening bid.
+            Local agencies quote $2,000–$8,000 for this work, plus a retainer to
+            keep it alive. Here, every project gets one flat number, quoted up
+            front from your scope — simple sites land in the hundreds, not
+            thousands, and apps are quoted the same way: once. And because the
+            invoice doesn&apos;t exist until you&apos;ve approved the draft, the
+            quote is the ceiling — not the opening bid.
           </p>
         </motion.div>
       </section>

@@ -103,6 +103,23 @@ export default function Contact() {
               </motion.div>
             ) : (
               <div>
+                {/* Proof, right where the decision happens */}
+                <p className="text-[13px] text-ink-faint mb-8">
+                  <span className="text-ink">50+</span> Yuma businesses ·{' '}
+                  <span className="text-ink">5.0★</span> average rating ·{' '}
+                  <span className="text-ink">zero</span> refunds ever requested
+                </p>
+
+                {/* Progress bar — starts ahead so finishing feels closer */}
+                <div className="h-[3px] bg-line mb-4 overflow-hidden rounded-full">
+                  <motion.div
+                    className="h-full bg-viper rounded-full"
+                    initial={false}
+                    animate={{ width: `${15 + step * 35}%` }}
+                    transition={{ duration: 0.5, ease: easing }}
+                  />
+                </div>
+
                 {/* Progress */}
                 <div className="flex items-center gap-4 mb-10">
                   {steps.map((label, i) => (
@@ -251,13 +268,18 @@ export default function Contact() {
                       Continue →
                     </button>
                   ) : (
-                    <button
-                      onClick={submit}
-                      disabled={status === 'sending'}
-                      className={`btn-primary !px-10 ${status === 'sending' ? 'opacity-60 pointer-events-none' : ''}`}
-                    >
-                      {status === 'sending' ? 'Sending…' : 'Send it — get my number'}
-                    </button>
+                    <div className="flex flex-col gap-3">
+                      <button
+                        onClick={submit}
+                        disabled={status === 'sending'}
+                        className={`btn-primary !px-10 ${status === 'sending' ? 'opacity-60 pointer-events-none' : ''}`}
+                      >
+                        {status === 'sending' ? 'Sending…' : 'Send it — get my number'}
+                      </button>
+                      <p className="text-[12px] text-ink-faint">
+                        No commitment — you&apos;re just getting a number.
+                      </p>
+                    </div>
                   )}
                 </div>
               </div>

@@ -27,7 +27,7 @@ html.lenis body {
 
 body {
   background: #faf9f5;
-  color: #6f695d;
+  color: #635d51;
   font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 17px;
   line-height: 1.7;
@@ -148,12 +148,12 @@ a:hover > .frame-hard {
 }
 
 .btn-primary {
-  background: #161510;
+  background: #2f3b24;
   color: #faf9f5;
 }
 
 .btn-primary:hover {
-  background: #2f3b24;
+  background: #161510;
 }
 
 .btn-secondary {
@@ -167,12 +167,12 @@ a:hover > .frame-hard {
 }
 
 .section-invert .btn-primary {
-  background: #faf9f5;
+  background: #c0a869;
   color: #161510;
 }
 
 .section-invert .btn-primary:hover {
-  background: #c0a869;
+  background: #faf9f5;
   color: #161510;
 }
 
@@ -210,6 +210,15 @@ a:hover > .frame-hard {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #a29b8c;
+}
+
+/* Visible keyboard focus — accessibility is trust */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2f3b24;
+  outline-offset: 3px;
 }
 
 .transition-smooth {

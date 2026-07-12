@@ -14,8 +14,8 @@ const config: Config = {
         },
         ink: {
           DEFAULT: '#161510',
-          soft: '#6F695D',
-          faint: '#A29B8C',
+          soft: '#635D51',
+          faint: '#8B8474',
         },
         viper: '#2F3B24',
         venom: '#C0A869',
