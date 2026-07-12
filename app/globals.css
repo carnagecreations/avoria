@@ -65,7 +65,7 @@ h1, h2 {
 }
 
 /* Quiet label */
-.overline {
+.eyebrow {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.3em;
@@ -83,7 +83,7 @@ h1, h2 {
   color: #c0a869;
 }
 
-.section-invert .overline {
+.section-invert .eyebrow {
   color: rgba(250, 249, 245, 0.4);
 }
 

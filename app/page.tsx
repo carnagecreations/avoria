@@ -104,7 +104,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease: easing }}
-            className="overline mb-12"
+            className="eyebrow mb-12"
           >
             Avoria — Web design studio · Yuma, AZ
           </motion.p>
@@ -183,7 +183,7 @@ export default function Home() {
       <section className="section-invert bg-ink py-28 md:py-44">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="mb-20 md:mb-32 max-w-[1200px] mx-auto">
-            <p className="overline mb-6">Selected work</p>
+            <p className="eyebrow mb-6">Selected work</p>
             <h2 className="max-w-3xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
                 Proof, with the <span className="stroke-em">numbers</span> attached.
@@ -248,7 +248,7 @@ export default function Home() {
       <section className="py-28 md:py-40 border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <div className="max-w-2xl mb-16 md:mb-24">
-            <p className="overline mb-5">The math</p>
+            <p className="eyebrow mb-5">The math</p>
             <h2 className="mb-6" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
                 Renting a website is the most expensive way to have one.
@@ -268,7 +268,7 @@ export default function Home() {
             className="grid md:grid-cols-2 gap-x-16 gap-y-14"
           >
             <div className="border-t border-line pt-8">
-              <p className="overline mb-8">The platform subscription</p>
+              <p className="eyebrow mb-8">The platform subscription</p>
               <div className="font-display text-4xl md:text-5xl text-ink mb-2">
                 $828–$2,340<span className="text-ink-faint text-2xl">+</span>
               </div>
@@ -282,7 +282,7 @@ export default function Home() {
             </div>
 
             <div className="border-t border-ink pt-8">
-              <p className="overline mb-8" style={{ color: '#2F3B24' }}>The Avoria build</p>
+              <p className="eyebrow mb-8" style={{ color: '#2F3B24' }}>The Avoria build</p>
               <div className="font-display text-4xl md:text-5xl text-ink mb-2">One flat price</div>
               <p className="text-ink-faint text-sm mb-10">then ~$11/year for the domain. That&apos;s it.</p>
               <ul className="space-y-4 text-ink text-[15px]">
@@ -316,19 +316,19 @@ export default function Home() {
             />
             <div className="grid grid-cols-3 gap-6">
               <div>
-                <p className="overline mb-2">Your bill</p>
+                <p className="eyebrow mb-2">Your bill</p>
                 <p className="font-display text-2xl md:text-3xl text-ink">
                   ${monthlyCost}<span className="text-base text-ink-faint">/mo</span>
                 </p>
               </div>
               <div>
-                <p className="overline mb-2">Over 3 years</p>
+                <p className="eyebrow mb-2">Over 3 years</p>
                 <p className="font-display text-2xl md:text-3xl text-clay">
                   ${threeYearCost.toLocaleString()}
                 </p>
               </div>
               <div>
-                <p className="overline mb-2">After launch</p>
+                <p className="eyebrow mb-2">After launch</p>
                 <p className="font-display text-2xl md:text-3xl text-viper">
                   $0<span className="text-base text-ink-faint">/mo</span>
                 </p>
@@ -342,7 +342,7 @@ export default function Home() {
       <section className="py-28 md:py-40 border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <div className="mb-16 md:mb-24">
-            <p className="overline mb-5">How it works</p>
+            <p className="eyebrow mb-5">How it works</p>
             <h2 className="max-w-2xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
                 First call to launch in about a <span className="stroke-em">week</span>.
@@ -381,7 +381,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: easing }}
           >
-            <p className="overline mb-8" style={{ color: '#C0A869' }}>
+            <p className="eyebrow mb-8" style={{ color: '#C0A869' }}>
               The guarantee
             </p>
             <h2 className="mb-8" style={{ fontSize: 'clamp(2.75rem, 7.5vw, 6.25rem)', lineHeight: 1.05 }}>
@@ -399,7 +399,7 @@ export default function Home() {
       {/* ============ TESTIMONIALS ============ */}
       <section className="py-28 md:py-40">
         <div className="max-w-[900px] mx-auto px-6 md:px-10">
-          <p className="overline mb-16 text-center">Client words</p>
+          <p className="eyebrow mb-16 text-center">Client words</p>
           <div className="space-y-20 md:space-y-24">
             {[
               {
@@ -459,7 +459,7 @@ export default function Home() {
       <section className="py-28 md:py-40 border-t border-line">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 grid lg:grid-cols-5 gap-16">
           <div className="lg:col-span-2">
-            <p className="overline mb-5">Questions</p>
+            <p className="eyebrow mb-5">Questions</p>
             <h2 className="mb-6" style={{ fontSize: 'clamp(1.7rem, 3.2vw, 2.4rem)' }}>
               Everything people ask before booking.
             </h2>
@@ -515,7 +515,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: easing }}
           >
-            <p className="overline mb-8">Next step</p>
+            <p className="eyebrow mb-8">Next step</p>
             <h2 className="mb-12" style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)', lineHeight: 1.12 }}>
               The call costs nothing. The draft costs nothing until you approve it.
               The only risk is <span className="stroke-em">keeping the site you have</span>.

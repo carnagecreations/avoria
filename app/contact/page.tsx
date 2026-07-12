@@ -36,7 +36,7 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <p className="overline mb-4">Contact</p>
+          <p className="eyebrow mb-4">Contact</p>
           <h1 className="mb-6 leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
             Book your <span className="stroke-em">free call</span>.
           </h1>

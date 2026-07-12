@@ -98,7 +98,7 @@ export default function Services() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <p className="overline mb-4">Services</p>
+          <p className="eyebrow mb-4">Services</p>
           <h1 className="mb-6 max-w-4xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
             Six ways in. Everything ships the same way:{' '}
             <span className="stroke-em">yours</span>.
@@ -148,7 +148,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="border-t border-ink pt-10 md:pt-14"
         >
-          <p className="overline mb-4">Pricing</p>
+          <p className="eyebrow mb-4">Pricing</p>
           <h2 className="mb-6" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>
             What it costs.
           </h2>
@@ -171,7 +171,7 @@ export default function Services() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <p className="overline mb-6">Next step — the call is free</p>
+            <p className="eyebrow mb-6">Next step — the call is free</p>
             <Link
               href="/contact"
               className="mega-link group"

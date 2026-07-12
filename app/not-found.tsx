@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <section className="min-h-[70vh] flex items-center">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full">
-        <p className="overline mb-4">404</p>
+        <p className="eyebrow mb-4">404</p>
         <h1 className="mb-6 leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
           This page shed its <span className="stroke-em">skin</span>.
         </h1>

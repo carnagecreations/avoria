@@ -18,12 +18,12 @@ export default function Footer() {
             <p className="text-paper/60 text-sm max-w-[220px]">
               Websites you own. Built to earn.
             </p>
-            <p className="overline mt-5" style={{ color: 'rgba(250,249,245,0.35)' }}>
+            <p className="eyebrow mt-5" style={{ color: 'rgba(250,249,245,0.35)' }}>
               Yuma, AZ
             </p>
           </div>
           <div>
-            <p className="overline mb-5" style={{ color: 'rgba(250,249,245,0.4)' }}>Services</p>
+            <p className="eyebrow mb-5" style={{ color: 'rgba(250,249,245,0.4)' }}>Services</p>
             <ul className="space-y-3 text-sm text-paper/60">
               <li>
                 <Link href="/services" className="hover:text-paper transition-smooth">
@@ -43,7 +43,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="overline mb-5" style={{ color: 'rgba(250,249,245,0.4)' }}>Studio</p>
+            <p className="eyebrow mb-5" style={{ color: 'rgba(250,249,245,0.4)' }}>Studio</p>
             <ul className="space-y-3 text-sm text-paper/60">
               <li>
                 <Link href="/about" className="hover:text-paper transition-smooth">
@@ -63,7 +63,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <p className="overline mb-5" style={{ color: 'rgba(250,249,245,0.4)' }}>Connect</p>
+            <p className="eyebrow mb-5" style={{ color: 'rgba(250,249,245,0.4)' }}>Connect</p>
             <ul className="space-y-3 text-sm text-paper/60">
               <li>
                 <Link href="/contact" className="hover:text-paper transition-smooth">

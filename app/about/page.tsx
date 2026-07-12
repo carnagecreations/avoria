@@ -77,7 +77,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <p className="overline mb-4">About</p>
+          <p className="eyebrow mb-4">About</p>
           <h1 className="mb-6 leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
             One person. <span className="stroke-em">All in</span>.
           </h1>
@@ -97,7 +97,7 @@ export default function About() {
           viewport={{ once: true }}
           className="grid md:grid-cols-12 gap-8"
         >
-          <p className="overline md:col-span-3">The Story</p>
+          <p className="eyebrow md:col-span-3">The Story</p>
           <div className="md:col-span-9 space-y-6 text-lg text-ink-soft leading-relaxed max-w-3xl">
             <p>
               Avoria started with a pattern I couldn&apos;t unsee: small businesses
@@ -130,7 +130,7 @@ export default function About() {
           transition={{ duration: 0.4 }}
           viewport={{ once: true }}
         >
-          <p className="overline mb-10">Principles</p>
+          <p className="eyebrow mb-10">Principles</p>
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -151,7 +151,7 @@ export default function About() {
 
       {/* The journey */}
       <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
-        <p className="overline mb-10">The Journey</p>
+        <p className="eyebrow mb-10">The Journey</p>
         <div className="border-l border-line ml-2 space-y-10">
           {timeline.map((item, i) => (
             <motion.div
@@ -215,7 +215,7 @@ export default function About() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <p className="overline mb-6">Let&apos;s build something that outlasts the invoice</p>
+            <p className="eyebrow mb-6">Let&apos;s build something that outlasts the invoice</p>
             <Link
               href="/contact"
               className="mega-link group"

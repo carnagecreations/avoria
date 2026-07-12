@@ -103,7 +103,7 @@ export default function Work() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <p className="overline mb-4">Selected Work</p>
+          <p className="eyebrow mb-4">Selected Work</p>
           <h1 className="mb-6 max-w-3xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
             The work, with <span className="stroke-em">numbers attached</span>.
           </h1>
@@ -171,7 +171,7 @@ export default function Work() {
                   </div>
                   <div className="grid md:grid-cols-12 gap-4 md:gap-8 mt-8">
                     <div className="md:col-span-6">
-                      <p className="overline mb-3">{project.category}</p>
+                      <p className="eyebrow mb-3">{project.category}</p>
                       <h3 className="text-2xl md:text-3xl group-hover:text-viper transition-smooth">
                         {project.title}
                       </h3>
@@ -211,7 +211,7 @@ export default function Work() {
                   <span className="text-4xl opacity-60">🦎</span>
                 </div>
                 <div className="order-2">
-                  <p className="overline mb-3">Secret</p>
+                  <p className="eyebrow mb-3">Secret</p>
                   <h3 className="text-2xl md:text-3xl mb-3 group-hover:text-clay transition-smooth">
                     {secretProject.title}
                   </h3>
@@ -305,7 +305,7 @@ export default function Work() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <p className="overline mb-6">Your business could be the next row on this page</p>
+            <p className="eyebrow mb-6">Your business could be the next row on this page</p>
             <Link
               href="/contact"
               className="mega-link group"

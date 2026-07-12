@@ -93,7 +93,7 @@ export default function Insights() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <p className="overline mb-4">Notes</p>
+          <p className="eyebrow mb-4">Notes</p>
           <h1 className="mb-6 max-w-3xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
             Straight answers about <span className="stroke-em">websites</span>.
           </h1>
@@ -187,7 +187,7 @@ export default function Insights() {
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <p className="overline mb-6">Reading is free. So is the call.</p>
+            <p className="eyebrow mb-6">Reading is free. So is the call.</p>
             <Link
               href="/contact"
               className="mega-link group"
