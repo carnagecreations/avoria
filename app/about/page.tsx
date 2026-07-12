@@ -71,17 +71,17 @@ export default function About() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
+      <section className="relative pt-32 pb-24 md:pt-52 md:pb-40 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="eyebrow mb-4">About</p>
-          <h1 className="mb-6 leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+          <p className="eyebrow mb-8">About</p>
+          <h1 className="mb-10 leading-[1.05]" style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>
             One person. <span className="stroke-em">All in</span>.
           </h1>
-          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+          <p className="text-xl md:text-2xl text-ink-soft max-w-2xl leading-relaxed">
             No account managers. No juniors. The person you talk to is the person
             who builds it.
           </p>
@@ -89,16 +89,17 @@ export default function About() {
       </section>
 
       {/* The story */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-          className="grid md:grid-cols-12 gap-8"
-        >
-          <p className="eyebrow md:col-span-3">The Story</p>
-          <div className="md:col-span-9 space-y-6 text-lg text-ink-soft leading-relaxed max-w-3xl">
+      <section className="py-40 md:py-56 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="grid md:grid-cols-12 gap-12 md:gap-20"
+          >
+            <p className="eyebrow md:col-span-3">The Story</p>
+            <div className="md:col-span-9 space-y-8 text-xl text-ink-soft leading-relaxed max-w-4xl">
             <p>
               Avoria started with a pattern I couldn&apos;t unsee: small businesses
               in Yuma getting quoted $2,000 to $8,000 for websites that
@@ -118,35 +119,38 @@ export default function About() {
               animal pays for it. I stopped being able to ship software that fails
               quietly — and that carried into every client build.
             </p>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Principles */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <p className="eyebrow mb-10">Principles</p>
+      <section className="py-40 md:py-56 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-x-12 gap-y-10"
           >
-            {principles.map((p) => (
-              <motion.div key={p.num} variants={itemVariants} className="border-t border-line pt-6">
-                <p className="font-mono text-sm text-ink-faint mb-3">{p.num}</p>
-                <h3 className="text-xl mb-2">{p.title}</h3>
-                <p className="text-ink-soft">{p.description}</p>
-              </motion.div>
-            ))}
+            <p className="eyebrow mb-16">Principles</p>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid md:grid-cols-2 gap-x-16 gap-y-16"
+            >
+              {principles.map((p) => (
+                <motion.div key={p.num} variants={itemVariants} className="border-t border-line pt-10">
+                  <p className="font-mono text-sm text-ink-faint mb-5">{p.num}</p>
+                  <h3 className="text-2xl md:text-3xl mb-4 leading-tight">{p.title}</h3>
+                  <p className="text-ink-soft text-lg leading-relaxed">{p.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* The journey */}

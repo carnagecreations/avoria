@@ -87,17 +87,17 @@ export default function Insights() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
+      <section className="relative pt-32 pb-24 md:pt-52 md:pb-40 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="eyebrow mb-4">Notes</p>
-          <h1 className="mb-6 max-w-3xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+          <p className="eyebrow mb-8">Notes</p>
+          <h1 className="mb-10 max-w-4xl leading-[1.05]" style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>
             Straight answers about <span className="stroke-em">websites</span>.
           </h1>
-          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+          <p className="text-xl md:text-2xl text-ink-soft max-w-2xl leading-relaxed">
             What things really cost, why sites are slow, and when you&apos;ve
             outgrown the off-the-shelf tool — from the person who builds the fixes.
           </p>
@@ -105,37 +105,39 @@ export default function Insights() {
       </section>
 
       {/* Article list */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-16">
-        <motion.div variants={containerVariants} initial="hidden" animate="visible">
-          {articles.map((article) => (
-            <motion.div key={article.id} variants={itemVariants}>
-              <Link
-                href={`/insights/${article.id}`}
-                className="group grid md:grid-cols-12 gap-3 md:gap-8 py-8 border-t border-line items-baseline"
-              >
-                <div className="md:col-span-2 font-mono text-xs tracking-[0.1em] text-ink-faint">
-                  {new Date(article.date).toLocaleDateString('en-US', {
-                    month: 'short',
-                    day: 'numeric',
-                    year: 'numeric',
-                  }).toUpperCase()}
-                </div>
-                <div className="md:col-span-2 font-mono text-xs tracking-[0.15em] uppercase text-viper">
-                  {article.category}
-                </div>
-                <div className="md:col-span-7">
-                  <h2 className="text-2xl md:text-3xl mb-2 group-hover:text-viper transition-smooth">
-                    {article.title}
-                  </h2>
-                  <p className="text-ink-soft text-sm">{article.excerpt}</p>
-                </div>
-                <div className="md:col-span-1 font-mono text-xs text-ink-faint md:text-right">
-                  {article.readTime}
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+      <section className="py-40 md:py-56 border-t border-line">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div variants={containerVariants} initial="hidden" animate="visible">
+            {articles.map((article) => (
+              <motion.div key={article.id} variants={itemVariants}>
+                <Link
+                  href={`/insights/${article.id}`}
+                  className="group grid md:grid-cols-12 gap-4 md:gap-12 py-12 md:py-16 border-t border-line items-baseline"
+                >
+                  <div className="md:col-span-2 font-mono text-xs tracking-[0.1em] text-ink-faint">
+                    {new Date(article.date).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    }).toUpperCase()}
+                  </div>
+                  <div className="md:col-span-2 font-mono text-xs tracking-[0.15em] uppercase text-viper">
+                    {article.category}
+                  </div>
+                  <div className="md:col-span-7">
+                    <h2 className="text-3xl md:text-4xl mb-4 group-hover:text-viper transition-smooth leading-tight">
+                      {article.title}
+                    </h2>
+                    <p className="text-ink-soft text-base">{article.excerpt}</p>
+                  </div>
+                  <div className="md:col-span-1 font-mono text-xs text-ink-faint md:text-right">
+                    {article.readTime}
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* Newsletter */}

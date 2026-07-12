@@ -63,17 +63,17 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-28 pb-12 md:pt-40 md:pb-16 max-w-[1200px] mx-auto px-6 md:px-10">
+      <section className="relative pt-32 pb-20 md:pt-52 md:pb-32 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: easing }}
+          transition={{ duration: 0.6, ease: easing }}
         >
-          <p className="eyebrow mb-4">Start a project</p>
-          <h1 className="mb-6 leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+          <p className="eyebrow mb-8">Start a project</p>
+          <h1 className="mb-10 leading-[1.05]" style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>
             Tell me what you <span className="stroke-em">need</span>.
           </h1>
-          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+          <p className="text-xl md:text-2xl text-ink-soft max-w-2xl leading-relaxed">
             Three quick steps — under a minute. You&apos;ll get one flat number
             back, usually within three hours.
           </p>
@@ -81,7 +81,7 @@ export default function Contact() {
       </section>
 
       {/* Form */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-28 border-t border-line pt-14 md:pt-16">
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-40 md:pb-56 border-t border-line pt-20 md:pt-28">
         <div className="grid md:grid-cols-5 gap-12 lg:gap-20">
           <div className="md:col-span-3">
             {status === 'done' ? (

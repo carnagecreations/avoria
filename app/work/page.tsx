@@ -97,17 +97,17 @@ export default function Work() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-28 pb-16 md:pt-40 md:pb-24 max-w-[1200px] mx-auto px-6 md:px-10">
+      <section className="relative pt-32 pb-24 md:pt-52 md:pb-40 max-w-[1200px] mx-auto px-6 md:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.6 }}
         >
-          <p className="eyebrow mb-4">Selected Work</p>
-          <h1 className="mb-6 max-w-3xl leading-[1.02]" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+          <p className="eyebrow mb-8">Selected Work</p>
+          <h1 className="mb-10 max-w-4xl leading-[1.05]" style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>
             The work, with <span className="stroke-em">numbers attached</span>.
           </h1>
-          <p className="text-lg md:text-xl text-ink-soft max-w-xl">
+          <p className="text-xl md:text-2xl text-ink-soft max-w-2xl leading-relaxed">
             No &ldquo;increased brand engagement&rdquo; here. Launch timelines,
             Lighthouse scores, and what each client stopped paying.
           </p>
@@ -115,13 +115,13 @@ export default function Work() {
       </section>
 
       {/* Filter */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-8">
-        <div className="flex flex-wrap gap-8 border-b border-line pb-6">
+      <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-12">
+        <div className="flex flex-wrap gap-10 border-b border-line pb-10">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`text-[13px] font-medium transition-smooth relative pb-1 ${
+              className={`text-sm font-medium transition-smooth relative pb-2 ${
                 filter === f ? 'text-ink' : 'text-ink-faint hover:text-ink'
               }`}
             >
@@ -135,13 +135,14 @@ export default function Work() {
       </section>
 
       {/* Editorial stacked list */}
-      <section className="max-w-[1200px] mx-auto px-6 md:px-10 pb-24">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="space-y-24 md:space-y-32"
-        >
+      <section className="py-40 md:py-56">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-32 md:space-y-48"
+          >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, i) => (
               <motion.div
@@ -226,7 +227,8 @@ export default function Work() {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Modal */}
