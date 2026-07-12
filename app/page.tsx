@@ -97,55 +97,70 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* ============ HERO ============ */}
-      <section className="relative min-h-[92vh] flex flex-col justify-center pt-24">
+      {/* ============ HERO — full-viewport typographic poster ============ */}
+      <section className="relative min-h-screen flex flex-col justify-center pt-24">
         <div className="max-w-[1200px] mx-auto px-6 md:px-10 w-full">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, ease: easing }}
-            className="overline mb-10"
+            transition={{ duration: 1, ease: easing }}
+            className="overline mb-12"
           >
             Avoria — Web design studio · Yuma, AZ
           </motion.p>
 
-          <h1
-            className="mb-10 max-w-5xl"
-            style={{ fontSize: 'clamp(2.9rem, 7vw, 6.25rem)', lineHeight: 1.04 }}
-          >
-            <Reveal delay={0.1}>First you see it.</Reveal>
-            <Reveal delay={0.22}>
-              <span className="stroke-em">Then</span> you pay for it.
-            </Reveal>
+          <h1 className="mb-14" style={{ fontSize: 'clamp(3.1rem, 8.5vw, 8rem)', lineHeight: 0.98 }}>
+            <span className="block overflow-hidden pb-[0.08em]">
+              <motion.span
+                className="block"
+                initial={{ opacity: 0, y: 90 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: easing, delay: 0.15 }}
+              >
+                First you see it.
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden pb-[0.12em]">
+              <motion.span
+                className="block"
+                initial={{ opacity: 0, y: 90 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: easing, delay: 0.3 }}
+              >
+                <span className="stroke-em">Then</span> you pay for it.
+              </motion.span>
+            </span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: easing }}
-            className="text-lg md:text-xl text-ink-soft mb-12 max-w-xl leading-relaxed"
-          >
-            I hand-code websites and custom apps for Yuma businesses. One flat
-            price, zero subscriptions — and the invoice doesn&apos;t exist until
-            you approve a working draft.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.8, ease: easing }}
-            className="flex flex-col sm:flex-row sm:items-center gap-6"
-          >
-            <Link href="/contact" className="btn-primary">
-              Book a free call
-            </Link>
-            <Link
-              href="/work"
-              className="text-sm font-medium text-ink hover:text-viper transition-smooth"
+          <div className="grid md:grid-cols-12 gap-8 items-end">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.9, ease: easing }}
+              className="md:col-span-6 text-lg md:text-xl text-ink-soft leading-relaxed max-w-xl"
             >
-              See the work →
-            </Link>
-          </motion.div>
+              I hand-code websites and custom apps for Yuma businesses. One flat
+              price, zero subscriptions — and the invoice doesn&apos;t exist until
+              you approve a working draft.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.9, ease: easing }}
+              className="md:col-span-6 flex flex-col sm:flex-row sm:items-center md:justify-end gap-6"
+            >
+              <Link href="/contact" className="btn-primary !px-10 !py-4">
+                Book a free call
+              </Link>
+              <Link
+                href="/work"
+                className="text-sm font-medium text-ink hover:text-viper transition-smooth"
+              >
+                See the work →
+              </Link>
+            </motion.div>
+          </div>
         </div>
 
         {/* Quiet proof row pinned to hero base */}
@@ -164,44 +179,53 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ============ SELECTED WORK ============ */}
-      <section className="py-28 md:py-40">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-          <div className="mb-16 md:mb-24">
-            <p className="overline mb-5">Selected work</p>
-            <h2 className="max-w-2xl" style={{ fontSize: 'clamp(1.9rem, 4vw, 3rem)' }}>
+      {/* ============ SELECTED WORK — dark gallery ============ */}
+      <section className="section-invert bg-ink py-28 md:py-44">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <div className="mb-20 md:mb-32 max-w-[1200px] mx-auto">
+            <p className="overline mb-6">Selected work</p>
+            <h2 className="max-w-3xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
                 Proof, with the <span className="stroke-em">numbers</span> attached.
               </Reveal>
             </h2>
           </div>
 
-          <div className="space-y-20 md:space-y-28">
+          <div className="space-y-28 md:space-y-40">
             {featuredWork.map((project, i) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 32 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.9, ease: easing }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 1, ease: easing }}
               >
                 <Link href="/work" className="group block">
-                  <div className={`md:w-[82%] ${i % 2 === 1 ? 'md:ml-auto' : ''}`}>
+                  <div className={`md:w-[86%] ${i % 2 === 1 ? 'md:ml-auto' : ''}`}>
                     <div className="frame-hard">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full aspect-[16/10] object-cover object-top"
-                      />
-                    </div>
-                    <div className="flex items-baseline justify-between gap-6 mt-6">
-                      <div>
-                        <h3 className="text-xl md:text-2xl group-hover:text-viper transition-smooth">
-                          {project.title}
-                        </h3>
-                        <p className="text-sm text-ink-faint mt-1">{project.tag}</p>
+                      <div className="aspect-[16/10] w-full overflow-hidden">
+                        <motion.img
+                          src={project.image}
+                          alt={project.title}
+                          initial={{ scale: 1.12 }}
+                          whileInView={{ scale: 1 }}
+                          viewport={{ once: true, margin: '-10%' }}
+                          transition={{ duration: 1.6, ease: easing }}
+                          className="w-full h-full object-cover object-top"
+                        />
                       </div>
-                      <p className="text-sm text-ink-soft text-right">{project.result}</p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3 mt-8">
+                      <div className="flex items-baseline gap-5">
+                        <span className="font-mono text-xs text-paper/30">0{i + 1}</span>
+                        <div>
+                          <h3 className="text-2xl md:text-3xl text-paper group-hover:text-venom transition-smooth">
+                            {project.title}
+                          </h3>
+                          <p className="text-sm text-paper/40 mt-1">{project.tag}</p>
+                        </div>
+                      </div>
+                      <p className="text-sm text-paper/60 sm:text-right">{project.result}</p>
                     </div>
                   </div>
                 </Link>
@@ -209,10 +233,10 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-20 text-center">
+          <div className="mt-24 md:mt-32 text-center">
             <Link
               href="/work"
-              className="text-sm font-medium text-ink hover:text-viper transition-smooth"
+              className="text-sm font-medium text-paper/70 hover:text-venom transition-smooth"
             >
               All case studies →
             </Link>
@@ -225,7 +249,7 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <div className="max-w-2xl mb-16 md:mb-24">
             <p className="overline mb-5">The math</p>
-            <h2 className="mb-6" style={{ fontSize: 'clamp(1.9rem, 4vw, 3rem)' }}>
+            <h2 className="mb-6" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
                 Renting a website is the most expensive way to have one.
               </Reveal>
@@ -319,7 +343,7 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <div className="mb-16 md:mb-24">
             <p className="overline mb-5">How it works</p>
-            <h2 className="max-w-2xl" style={{ fontSize: 'clamp(1.9rem, 4vw, 3rem)' }}>
+            <h2 className="max-w-2xl" style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}>
               <Reveal>
                 First call to launch in about a <span className="stroke-em">week</span>.
               </Reveal>
@@ -360,7 +384,7 @@ export default function Home() {
             <p className="overline mb-8" style={{ color: '#C0A869' }}>
               The guarantee
             </p>
-            <h2 className="mb-8" style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4.25rem)', lineHeight: 1.12 }}>
+            <h2 className="mb-8" style={{ fontSize: 'clamp(2.75rem, 7.5vw, 6.25rem)', lineHeight: 1.05 }}>
               If the draft isn&apos;t right, you owe{' '}
               <span className="stroke-em">nothing</span>.
             </h2>
@@ -399,7 +423,7 @@ export default function Home() {
               >
                 <p
                   className="font-display text-ink mb-8"
-                  style={{ fontSize: 'clamp(1.4rem, 2.8vw, 2rem)', lineHeight: 1.45 }}
+                  style={{ fontSize: 'clamp(1.6rem, 3.4vw, 2.5rem)', lineHeight: 1.4 }}
                 >
                   &ldquo;{t.quote}&rdquo;
                 </p>
@@ -492,7 +516,7 @@ export default function Home() {
             transition={{ duration: 0.9, ease: easing }}
           >
             <p className="overline mb-8">Next step</p>
-            <h2 className="mb-12" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', lineHeight: 1.15 }}>
+            <h2 className="mb-12" style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)', lineHeight: 1.12 }}>
               The call costs nothing. The draft costs nothing until you approve it.
               The only risk is <span className="stroke-em">keeping the site you have</span>.
             </h2>

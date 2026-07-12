@@ -83,6 +83,22 @@ h1, h2 {
   color: #c0a869;
 }
 
+.section-invert .overline {
+  color: rgba(250, 249, 245, 0.4);
+}
+
+/* Plates hung in the dark gallery: hairline edge, deep shadow */
+.section-invert .frame-hard {
+  border: 1px solid rgba(250, 249, 245, 0.08);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.6);
+}
+
+.section-invert .group:hover .frame-hard,
+.section-invert a:hover > .frame-hard {
+  transform: translateY(-4px);
+  box-shadow: 0 48px 100px -30px rgba(0, 0, 0, 0.7);
+}
+
 /* Large numerals — quiet, solid, recede into the page */
 .ghost {
   font-family: var(--font-display), Georgia, serif;
