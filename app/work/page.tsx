@@ -7,6 +7,51 @@ import Link from 'next/link';
 const projects = [
   {
     id: 1,
+    title: 'SanctuaryBase — Animal Sanctuary Management App',
+    category: 'Web Apps',
+    client: 'Saint Francis Rescue & Sanctuary',
+    result: '60 screens · Real animal care operations',
+    description:
+      'A complete operational app for managing animal sanctuary care: daily animal records with 16 tabs (medical, feeding, behavior), volunteer shift scheduling, vet triage tool with AI chat, people/CRM, and public website integration. Hand-coded from intake to production.',
+    stack: ['Next.js', 'Cloudflare KV', 'Custom app', 'SMS', 'AI integration'],
+    image: null,
+    featured: true,
+  },
+  {
+    id: 2,
+    title: 'Frank & Son — Window Tinting Shop',
+    category: 'Web Design',
+    client: 'Frank & Son',
+    result: "Yuma's oldest tint shop since day one",
+    description:
+      'Ceramic and dyed window tint — a local landmark rebuilt as a conversion-focused site. Service gallery, quote calculator, headlight restoration showcase, and a tint visualizer tool.',
+    stack: ['Next.js', 'Cloudflare Pages', 'Contact pipeline'],
+    image: null,
+  },
+  {
+    id: 3,
+    title: 'Saint Francis Rescue & Sanctuary — Nonprofit Site',
+    category: 'Nonprofit',
+    client: 'Saint Francis Rescue & Sanctuary',
+    result: 'Adoption pipeline · volunteer signup',
+    description:
+      'A farm sanctuary in Yuma — not a shelter, a permanent home. The site powers animal adoption listings, foster placements, volunteer sign-ups, and donation pages. Feeds directly into SanctuaryBase ops.',
+    stack: ['Next.js', 'Airtable sync', 'Donation pipeline'],
+    image: null,
+  },
+  {
+    id: 4,
+    title: 'Horror Ghouls — Haunted Bakery',
+    category: 'Web Design',
+    client: 'Horror Ghouls',
+    result: 'Movie-night dessert builder',
+    description:
+      'Two bakers, one haunted kitchen. A bakery site for custom boxes — classic cookies, slasher-themed pastries, a caramel puffcorn cult following, and a video showing the haunted kitchen in action.',
+    stack: ['Next.js', 'Cloudflare Pages', 'Custom box builder'],
+    image: null,
+  },
+  {
+    id: 5,
     title: 'Montijo — Service Business Website',
     category: 'Web Design',
     client: 'Montijo',
@@ -17,7 +62,7 @@ const projects = [
     image: '/images/screenshot-montijo.webp',
   },
   {
-    id: 2,
+    id: 6,
     title: "Brennan's — Local Business Website",
     category: 'Web Design',
     client: "Brennan's",
@@ -28,7 +73,7 @@ const projects = [
     image: '/images/screenshot-brennans.webp',
   },
   {
-    id: 3,
+    id: 7,
     title: 'Rescue Website Rebuild — Beauties of the Beasts',
     category: 'Performance',
     client: 'Beauties of the Beasts',
@@ -39,7 +84,7 @@ const projects = [
     image: '/images/screenshot-beauties.webp',
   },
   {
-    id: 4,
+    id: 8,
     title: 'Salon Booking App',
     category: 'Web Apps',
     client: 'L. Castillo, Salon Owner',
@@ -76,7 +121,7 @@ export default function Work() {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, []);
 
-  const filters = ['All', 'Web Design', 'Web Apps', 'Performance'];
+  const filters = ['All', 'Web Design', 'Web Apps', 'Performance', 'Nonprofit'];
 
   const filteredProjects =
     filter === 'All' ? projects : projects.filter((p) => p.category === filter);
@@ -112,6 +157,67 @@ export default function Work() {
             Lighthouse scores, and what each client stopped paying.
           </p>
         </motion.div>
+      </section>
+
+      {/* Featured: SanctuaryBase */}
+      <section className="py-40 md:py-56 border-t border-line section-invert bg-ink">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="grid md:grid-cols-2 gap-16 items-start">
+              <div>
+                <p className="eyebrow mb-8" style={{ color: '#C0A869' }}>The custom app</p>
+                <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: 1.1 }} className="mb-10 text-paper">
+                  SanctuaryBase — Animal Sanctuary Operations
+                </h2>
+                <p className="text-xl text-paper/70 mb-8 leading-relaxed max-w-2xl">
+                  60 screens. A complete operational app built from scratch for Saint Francis Rescue & Sanctuary in Yuma — handling daily animal care, medical records, volunteer scheduling, vet triage, and public adoption listings.
+                </p>
+                <ul className="space-y-5 mb-12 max-w-2xl">
+                  <li className="text-paper/70 flex gap-3">
+                    <span className="text-venom flex-shrink-0">✓</span>
+                    <span>16-tab animal medical records (Profile, Health, Meds, Behavior, Website listing, and more)</span>
+                  </li>
+                  <li className="text-paper/70 flex gap-3">
+                    <span className="text-venom flex-shrink-0">✓</span>
+                    <span>Volunteer shift scheduling with calendar and slot management</span>
+                  </li>
+                  <li className="text-paper/70 flex gap-3">
+                    <span className="text-venom flex-shrink-0">✓</span>
+                    <span>Vet Hub: emergency protocols, species care guides, symptom triage, AI chat, and contact directory</span>
+                  </li>
+                  <li className="text-paper/70 flex gap-3">
+                    <span className="text-venom flex-shrink-0">✓</span>
+                    <span>Admin dashboard with compliance tracking, daily care logging, and operations overview</span>
+                  </li>
+                  <li className="text-paper/70 flex gap-3">
+                    <span className="text-venom flex-shrink-0">✓</span>
+                    <span>Inbox: adoption, foster, volunteer applications with status pipelines</span>
+                  </li>
+                </ul>
+                <p className="text-sm text-paper/50">Stack: Next.js, Cloudflare KV, SMS integration, AI chat, real sanctuary operations</p>
+              </div>
+              <div>
+                <div className="bg-paper/10 border border-paper/20 p-8 md:p-10 rounded text-paper/70 text-sm leading-relaxed space-y-4">
+                  <p className="text-paper">The standard for every custom app here.</p>
+                  <p>
+                    When a sanctuary staff member opens this app, they're not learning a template — they're using a system built around exactly how they work. Intake wizard walks through vet history. Feeding logs track what each animal gets. Behavior notes auto-surface on next shift. Medical alerts flag overdue vaccines. The app does the thinking so the people can focus on care.
+                  </p>
+                  <p>
+                    Because I run a reptile rescue too, I built this understanding something the standard SaaS can't: what happens when the system fails is the animal that pays for it. So every screen was tested live with real staff, and every feature stays only if the team actually uses it.
+                  </p>
+                  <p className="text-paper/50 italic">
+                    This is the lesson that carries into every custom app and every integration — operations software isn't clever until it's invisible.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Filter */}
