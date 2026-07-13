@@ -1,18 +1,25 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
     <footer className="section-invert bg-ink mt-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-10">
-        <p
-          aria-hidden
-          className="font-display text-paper/[0.92] leading-[0.9] select-none mb-20 md:mb-28 -ml-1"
-          style={{ fontSize: 'clamp(4rem, 14vw, 11rem)', letterSpacing: '-0.02em' }}
-        >
-          Avoria<span className="text-venom">.</span>
-        </p>
+        <div className="overflow-hidden mb-20 md:mb-28">
+          <motion.p
+            aria-hidden
+            initial={{ y: '100%' }}
+            whileInView={{ y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-paper/[0.92] leading-[0.9] select-none -ml-1"
+            style={{ fontSize: 'clamp(4rem, 14vw, 11rem)', letterSpacing: '-0.02em' }}
+          >
+            Avoria<span className="text-venom">.</span>
+          </motion.p>
+        </div>
         <div className="grid md:grid-cols-4 gap-10 mb-20">
           <div>
             <p className="text-paper/60 text-sm max-w-[220px]">

@@ -7,6 +7,7 @@ import MotionProvider from "@/components/MotionProvider";
 import Cursor from "@/components/Cursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
+import Altimeter from "@/components/Altimeter";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -69,6 +70,7 @@ export default function RootLayout({
           <Preloader />
           <SmoothScroll />
           <Cursor />
+          <Altimeter />
           <Navigation />
           <main className="flex-1 pt-16">{children}</main>
           <Footer />

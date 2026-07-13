@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import Topo from '@/components/Topo';
 
 const articles = [
   {
@@ -64,6 +65,14 @@ export default function Insights() {
   const [email, setEmail] = useState('');
   const [subscribeSuccess, setSubscribeSuccess] = useState(false);
 
+  // Cursor-following preview card over the article list (fine pointers only)
+  const [hovered, setHovered] = useState<number | null>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const cardX = useSpring(mx, { stiffness: 260, damping: 28, mass: 0.7 });
+  const cardY = useSpring(my, { stiffness: 260, damping: 28, mass: 0.7 });
+  const hoveredArticle = articles.find((a) => a.id === hovered);
+
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     setSubscribeSuccess(true);
@@ -87,11 +96,13 @@ export default function Insights() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-32 pb-24 md:pt-52 md:pb-40 max-w-[1200px] mx-auto px-6 md:px-10">
+      <section className="relative pt-32 pb-24 md:pt-52 md:pb-40 overflow-hidden">
+        <Topo className="pointer-events-none absolute -top-24 -right-32 w-[420px] md:w-[560px] text-ink/[0.05]" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10"
         >
           <p className="eyebrow mb-8">Notes</p>
           <h1 className="mb-10 max-w-4xl leading-[1.05]" style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>
@@ -105,21 +116,34 @@ export default function Insights() {
       </section>
 
       {/* Article list */}
-      <section className="py-40 md:py-56 border-t border-line">
+      <section
+        className="py-40 md:py-56 border-t border-line"
+        onMouseMove={(e) => {
+          mx.set(e.clientX);
+          my.set(e.clientY);
+        }}
+      >
         <div className="max-w-[1200px] mx-auto px-6 md:px-10">
           <motion.div variants={containerVariants} initial="hidden" animate="visible">
             {articles.map((article) => (
               <motion.div key={article.id} variants={itemVariants}>
                 <Link
                   href={`/insights/${article.id}`}
+                  onMouseEnter={() => setHovered(article.id)}
+                  onMouseLeave={() => setHovered(null)}
                   className="group grid md:grid-cols-12 gap-4 md:gap-12 py-12 md:py-16 border-t border-line items-baseline"
                 >
-                  <div className="md:col-span-2 font-mono text-xs tracking-[0.1em] text-ink-faint">
+                  <div className="md:col-span-2">
+                    <span className="ghost text-4xl md:text-5xl block mb-3" aria-hidden>
+                      {String(article.id).padStart(2, '0')}
+                    </span>
+                    <span className="font-mono text-xs tracking-[0.1em] text-ink-faint block">
                     {new Date(article.date).toLocaleDateString('en-US', {
                       month: 'short',
                       day: 'numeric',
                       year: 'numeric',
                     }).toUpperCase()}
+                    </span>
                   </div>
                   <div className="md:col-span-2 font-mono text-xs tracking-[0.15em] uppercase text-viper">
                     {article.category}
@@ -138,6 +162,34 @@ export default function Insights() {
             ))}
           </motion.div>
         </div>
+
+        {/* Cursor-following preview card */}
+        <motion.div
+          className="fixed top-0 left-0 z-50 pointer-events-none hidden lg:block"
+          style={{ x: cardX, y: cardY }}
+          aria-hidden
+        >
+          <AnimatePresence>
+            {hoveredArticle && (
+              <motion.div
+                key={hoveredArticle.id}
+                initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.9, rotate: 2 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="ml-6 -mt-24 w-60 bg-ink text-paper p-6 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]"
+              >
+                <p className="font-display text-5xl text-paper/20 leading-none mb-4" aria-hidden>
+                  {String(hoveredArticle.id).padStart(2, '0')}
+                </p>
+                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-venom mb-2">
+                  {hoveredArticle.category} · {hoveredArticle.readTime}
+                </p>
+                <p className="font-display text-lg leading-snug">Read the note →</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       {/* Newsletter */}

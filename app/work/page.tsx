@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import ParallaxImage from '@/components/ParallaxImage';
 
 const projects = [
   {
@@ -14,7 +15,7 @@ const projects = [
     description:
       'A complete operational app for managing animal sanctuary care: daily animal records with 16 tabs (medical, feeding, behavior), volunteer shift scheduling, vet triage tool with AI chat, people/CRM, and public website integration. Hand-coded from intake to production.',
     stack: ['Next.js', 'Cloudflare KV', 'Custom app', 'SMS', 'AI integration'],
-    image: '/images/screenshot-sanctuarybase.webp',
+    image: '/images/screenshot-sanctuarybase.png',
     url: 'https://sanctuarybase.pages.dev/',
     featured: true,
   },
@@ -118,6 +119,16 @@ export default function Work() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [secretUnlocked, setSecretUnlocked] = useState(false);
 
+  // SanctuaryBase showcase: scroll zooms the dashboard from framed plate to full-bleed
+  const zoomRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: zoomProgress } = useScroll({
+    target: zoomRef,
+    offset: ['start start', 'end end'],
+  });
+  const dashScale = useTransform(zoomProgress, [0, 0.9], [0.55, 1], { clamp: true });
+  const dashRadius = useTransform(zoomProgress, [0, 0.9], [6, 0]);
+  const dashHintOpacity = useTransform(zoomProgress, [0, 0.2], [1, 0]);
+
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key.toLowerCase() === 'v' && e.ctrlKey) {
@@ -167,63 +178,101 @@ export default function Work() {
       </section>
 
       {/* Featured: SanctuaryBase */}
-      <section className="py-40 md:py-56 border-t border-line section-invert bg-ink">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="grid md:grid-cols-2 gap-16 items-start">
-              <div>
-                <p className="eyebrow mb-8" style={{ color: '#C0A869' }}>The custom app</p>
-                <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: 1.1 }} className="mb-10 text-paper">
-                  SanctuaryBase — Animal Sanctuary Operations
-                </h2>
-                <p className="text-xl text-paper/70 mb-8 leading-relaxed max-w-2xl">
-                  60 screens. A complete operational app built from scratch for Saint Francis Rescue & Sanctuary in Yuma — handling daily animal care, medical records, volunteer scheduling, vet triage, and public adoption listings.
-                </p>
-                <ul className="space-y-5 mb-12 max-w-2xl">
-                  <li className="text-paper/70 flex gap-3">
-                    <span className="text-venom flex-shrink-0">✓</span>
-                    <span>16-tab animal medical records (Profile, Health, Meds, Behavior, Website listing, and more)</span>
-                  </li>
-                  <li className="text-paper/70 flex gap-3">
-                    <span className="text-venom flex-shrink-0">✓</span>
-                    <span>Volunteer shift scheduling with calendar and slot management</span>
-                  </li>
-                  <li className="text-paper/70 flex gap-3">
-                    <span className="text-venom flex-shrink-0">✓</span>
-                    <span>Vet Hub: emergency protocols, species care guides, symptom triage, AI chat, and contact directory</span>
-                  </li>
-                  <li className="text-paper/70 flex gap-3">
-                    <span className="text-venom flex-shrink-0">✓</span>
-                    <span>Admin dashboard with compliance tracking, daily care logging, and operations overview</span>
-                  </li>
-                  <li className="text-paper/70 flex gap-3">
-                    <span className="text-venom flex-shrink-0">✓</span>
-                    <span>Inbox: adoption, foster, volunteer applications with status pipelines</span>
-                  </li>
-                </ul>
+      <section className="border-t border-line section-invert overflow-visible" style={{ backgroundColor: '#161510' }}>
+        {/* Title & Description */}
+        <div className="pt-40 md:pt-56 pb-12 px-6 md:px-10">
+          <div className="max-w-[1200px] mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="eyebrow mb-8" style={{ color: '#C0A869' }}>The custom app</p>
+              <h2 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: 1.1 }} className="mb-10 text-paper">
+                SanctuaryBase — Animal Sanctuary Operations
+              </h2>
+              <p className="text-xl text-paper/70 mb-8 leading-relaxed max-w-2xl">
+                60 screens. A complete operational app built from scratch for Saint Francis Rescue & Sanctuary in Yuma — handling daily animal care, medical records, volunteer scheduling, vet triage, and public adoption listings.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Dashboard — scroll zooms from framed plate to full-bleed */}
+        <div ref={zoomRef} className="relative h-[220vh] my-10">
+          <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+            <motion.div
+              style={{ scale: dashScale, borderRadius: dashRadius }}
+              className="w-full overflow-hidden shadow-[0_60px_120px_-40px_rgba(0,0,0,0.7)]"
+            >
+              <img
+                src="/images/screenshot-sanctuarybase.png"
+                alt="SanctuaryBase — Animal Sanctuary Management App"
+                className="w-full h-auto block"
+              />
+            </motion.div>
+            <motion.p
+              style={{ opacity: dashHintOpacity }}
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 font-mono text-[11px] tracking-[0.25em] uppercase text-paper/40 whitespace-nowrap"
+            >
+              Scroll — step inside the app
+            </motion.p>
+          </div>
+        </div>
+
+        {/* Features & Description */}
+        <div className="pb-40 md:pb-56 px-6 md:px-10">
+          <div className="max-w-[1200px] mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="space-y-12">
+                <div className="grid md:grid-cols-2 gap-12">
+                  <ul className="space-y-5">
+                    <li className="text-paper/70 flex gap-3">
+                      <span className="text-venom flex-shrink-0">✓</span>
+                      <span>16-tab animal medical records (Profile, Health, Meds, Behavior, Website listing, and more)</span>
+                    </li>
+                    <li className="text-paper/70 flex gap-3">
+                      <span className="text-venom flex-shrink-0">✓</span>
+                      <span>Volunteer shift scheduling with calendar and slot management</span>
+                    </li>
+                    <li className="text-paper/70 flex gap-3">
+                      <span className="text-venom flex-shrink-0">✓</span>
+                      <span>Vet Hub: emergency protocols, species care guides, symptom triage, AI chat, and contact directory</span>
+                    </li>
+                    <li className="text-paper/70 flex gap-3">
+                      <span className="text-venom flex-shrink-0">✓</span>
+                      <span>Admin dashboard with compliance tracking, daily care logging, and operations overview</span>
+                    </li>
+                    <li className="text-paper/70 flex gap-3">
+                      <span className="text-venom flex-shrink-0">✓</span>
+                      <span>Inbox: adoption, foster, volunteer applications with status pipelines</span>
+                    </li>
+                  </ul>
+
+                  <div className="bg-paper/10 border border-paper/20 p-8 md:p-10 rounded text-paper/70 text-sm leading-relaxed space-y-4">
+                    <p className="text-paper">The standard for every custom app here.</p>
+                    <p>
+                      When a sanctuary staff member opens this app, they're not learning a template — they're using a system built around exactly how they work. Intake wizard walks through vet history. Feeding logs track what each animal gets. Behavior notes auto-surface on next shift. Medical alerts flag overdue vaccines. The app does the thinking so the people can focus on care.
+                    </p>
+                    <p>
+                      Because I run a reptile rescue too, I built this understanding something the standard SaaS can't: what happens when the system fails is the animal that pays for it. So every screen was tested live with real staff, and every feature stays only if the team actually uses it.
+                    </p>
+                    <p className="text-paper/50 italic">
+                      This is the lesson that carries into every custom app and every integration — operations software isn't clever until it's invisible.
+                    </p>
+                  </div>
+                </div>
+
                 <p className="text-sm text-paper/50">Stack: Next.js, Cloudflare KV, SMS integration, AI chat, real sanctuary operations</p>
               </div>
-              <div>
-                <div className="bg-paper/10 border border-paper/20 p-8 md:p-10 rounded text-paper/70 text-sm leading-relaxed space-y-4">
-                  <p className="text-paper">The standard for every custom app here.</p>
-                  <p>
-                    When a sanctuary staff member opens this app, they're not learning a template — they're using a system built around exactly how they work. Intake wizard walks through vet history. Feeding logs track what each animal gets. Behavior notes auto-surface on next shift. Medical alerts flag overdue vaccines. The app does the thinking so the people can focus on care.
-                  </p>
-                  <p>
-                    Because I run a reptile rescue too, I built this understanding something the standard SaaS can't: what happens when the system fails is the animal that pays for it. So every screen was tested live with real staff, and every feature stays only if the team actually uses it.
-                  </p>
-                  <p className="text-paper/50 italic">
-                    This is the lesson that carries into every custom app and every integration — operations software isn't clever until it's invisible.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -267,12 +316,11 @@ export default function Work() {
               >
                 <div className={`md:w-[82%] ${i % 2 === 1 ? 'md:ml-auto' : ''}`}>
                   <div className="frame-hard">
-                    <div className="aspect-[16/10] w-full overflow-hidden">
+                    <div className="w-full bg-paper-deep">
                       {project.image ? (
-                        <img
+                        <ParallaxImage
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover object-top"
                         />
                       ) : (
                         <div className="w-full h-full bg-paper-deep flex items-center justify-center">

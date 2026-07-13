@@ -9,6 +9,7 @@ import ContourField from '@/components/ContourField';
 import Marquee from '@/components/Marquee';
 import CountUp from '@/components/CountUp';
 import Magnetic from '@/components/Magnetic';
+import RentMeter from '@/components/RentMeter';
 
 const faqs = [
   {
@@ -100,8 +101,15 @@ const easing: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [monthlyCost, setMonthlyCost] = useState(49);
-  const threeYearCost = monthlyCost * 36;
+
+  // Hero recedes as the gallery takes over
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroY = useTransform(heroProgress, [0, 1], [0, -120]);
+  const heroOpacity = useTransform(heroProgress, [0, 0.75], [1, 0]);
 
   // Horizontal gallery: vertical scroll drives horizontal glide
   const galleryRef = useRef<HTMLElement>(null);
@@ -119,12 +127,15 @@ export default function Home() {
       />
 
       {/* ============ HERO — interactive contour field ============ */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-24 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center pt-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ContourField />
         </div>
 
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 w-full pb-28">
+        <motion.div
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 w-full pb-28"
+        >
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -191,7 +202,7 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Velocity ticker pinned to hero base */}
         <motion.div
@@ -324,49 +335,11 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* ROI slider */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: easing }}
-            className="mt-20 md:mt-28 border-t border-line pt-10 max-w-3xl"
-          >
-            <h3 className="text-xl mb-1">Do your own math.</h3>
-            <p className="text-ink-faint text-sm mb-10">Drag to your current monthly bill.</p>
-            <input
-              type="range"
-              min="0"
-              max="300"
-              step="5"
-              value={monthlyCost}
-              onChange={(e) => setMonthlyCost(Number(e.target.value))}
-              aria-label="Current monthly platform cost"
-              className="mb-10"
-            />
-            <div className="grid grid-cols-3 gap-6">
-              <div>
-                <p className="eyebrow mb-2">Your bill</p>
-                <p className="font-display text-2xl md:text-3xl text-ink">
-                  ${monthlyCost}<span className="text-base text-ink-faint">/mo</span>
-                </p>
-              </div>
-              <div>
-                <p className="eyebrow mb-2" style={{ color: '#96552F' }}>Gone in 3 years</p>
-                <p className="font-display text-2xl md:text-3xl text-clay">
-                  ${threeYearCost.toLocaleString()}
-                </p>
-              </div>
-              <div>
-                <p className="eyebrow mb-2">After launch</p>
-                <p className="font-display text-2xl md:text-3xl text-viper">
-                  $0<span className="text-base text-ink-faint">/mo</span>
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
+
+      {/* ============ THE METER — scroll-driven rent experience ============ */}
+      <RentMeter />
 
       {/* ============ PROCESS — stacking cards ============ */}
       <section className="py-40 md:py-56 border-t border-line">

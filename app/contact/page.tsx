@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ContourField from '@/components/ContourField';
 
 const needOptions = ['A new website', 'A custom app', 'A faster site', 'Something else'];
 const timelineOptions = ['As soon as possible', 'Within a month', 'Just exploring'];
@@ -63,11 +64,15 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-52 md:pb-32 max-w-[1200px] mx-auto px-6 md:px-10">
+      <section className="relative pt-32 pb-20 md:pt-52 md:pb-32 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-60 pointer-events-none" aria-hidden>
+          <ContourField />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easing }}
+          className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10"
         >
           <p className="eyebrow mb-8">Start a project</p>
           <h1 className="mb-10 leading-[1.05]" style={{ fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>

@@ -1,7 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Parallax from '@/components/Parallax';
+import ScrollInk from '@/components/ScrollInk';
 
 const principles = [
   {
@@ -55,6 +58,14 @@ const timeline = [
 ];
 
 export default function About() {
+  // The journey line draws itself as the timeline scrolls through view
+  const journeyRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: journeyProgress } = useScroll({
+    target: journeyRef,
+    offset: ['start 0.8', 'end 0.55'],
+  });
+  const lineScale = useTransform(journeyProgress, [0, 1], [0, 1]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -99,26 +110,10 @@ export default function About() {
             className="grid md:grid-cols-12 gap-12 md:gap-20"
           >
             <p className="eyebrow md:col-span-3">The Story</p>
-            <div className="md:col-span-9 space-y-8 text-xl text-ink-soft leading-relaxed max-w-4xl">
-            <p>
-              Avoria started with a pattern I couldn&apos;t unsee: small businesses
-              getting quoted $2,000 to $8,000 for websites that shouldn&apos;t cost
-              anywhere near that — then locked into monthly platform fees on top
-              of it, forever.
-            </p>
-            <p>
-              So I built the opposite. Every site I ship is hand-coded, with no
-              template platform underneath it. Every project is priced once, with
-              nothing recurring after launch. And the code belongs to the client
-              from day one — no lock-in, no ransom to leave.
-            </p>
-            <p>
-              The standard comes from an unusual place. I also direct Beauties of
-              the Beasts, a reptile rescue that has rehomed more than 300 animals,
-              and I work as a vet tech. When an intake system fails at a rescue, an
-              animal pays for it. I stopped being able to ship software that fails
-              quietly — and that carried into every client build.
-            </p>
+            <div className="md:col-span-9 space-y-8 text-xl md:text-2xl text-ink leading-relaxed max-w-4xl">
+              <ScrollInk text="Avoria started with a pattern I couldn't unsee: small businesses getting quoted $2,000 to $8,000 for websites that shouldn't cost anywhere near that — then locked into monthly platform fees on top of it, forever." />
+              <ScrollInk text="So I built the opposite. Every site I ship is hand-coded, with no template platform underneath it. Every project is priced once, with nothing recurring after launch. And the code belongs to the client from day one — no lock-in, no ransom to leave." />
+              <ScrollInk text="The standard comes from an unusual place. I also direct Beauties of the Beasts, a reptile rescue that has rehomed more than 300 animals, and I work as a vet tech. When an intake system fails at a rescue, an animal pays for it. I stopped being able to ship software that fails quietly — and that carried into every client build." />
             </div>
           </motion.div>
         </div>
@@ -156,7 +151,13 @@ export default function About() {
       {/* The journey */}
       <section className="max-w-[1200px] mx-auto px-6 md:px-10 py-16 border-t border-line">
         <p className="eyebrow mb-10">The Journey</p>
-        <div className="border-l border-line ml-2 space-y-10">
+        <div ref={journeyRef} className="relative ml-2 space-y-10">
+          <span className="absolute left-0 top-0 bottom-0 w-px bg-line" aria-hidden />
+          <motion.span
+            className="absolute left-0 top-0 bottom-0 w-px bg-viper origin-top"
+            style={{ scaleY: lineScale }}
+            aria-hidden
+          />
           {timeline.map((item, i) => (
             <motion.div
               key={item.label}
@@ -184,13 +185,15 @@ export default function About() {
           className="grid md:grid-cols-12 gap-10 items-center"
         >
           <div className="md:col-span-4">
-            <div className="aspect-square w-full max-w-[320px] frame-hard">
-              <img
-                src="/images/shiann-headshot.webp"
-                alt="Shiann Bowman"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <Parallax amount={28}>
+              <div className="aspect-square w-full max-w-[320px] frame-hard">
+                <img
+                  src="/images/shiann-headshot.webp"
+                  alt="Shiann Bowman"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </Parallax>
           </div>
           <div className="md:col-span-8">
             <h2 className="mb-4" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}>

@@ -3,6 +3,9 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Magnetic from '@/components/Magnetic';
+import Parallax from '@/components/Parallax';
+import ScrollInk from '@/components/ScrollInk';
+import ServiceChapters from '@/components/ServiceChapters';
 
 const services = [
   {
@@ -111,8 +114,11 @@ export default function Services() {
         </motion.div>
       </section>
 
-      {/* Service rows — alternating dark sections */}
-      <section className="w-full">
+      {/* Desktop: pinned chapter scroller — scroll flips through the services */}
+      <ServiceChapters services={services} />
+
+      {/* Mobile: stacked service rows */}
+      <section className="w-full md:hidden">
         {services.map((service, i) => (
           <motion.section
             key={service.num}
@@ -125,23 +131,38 @@ export default function Services() {
             <div className="max-w-[1200px] mx-auto px-6 md:px-10">
               <div className="grid md:grid-cols-12 gap-8 md:gap-16">
                 <div className="md:col-span-5">
-                  <p className="ghost text-7xl md:text-8xl mb-8" aria-hidden style={{ color: i % 2 === 1 ? '#C0A869' : 'currentColor' }}>
-                    {service.num}
-                  </p>
+                  <Parallax amount={36}>
+                    <p className="ghost text-7xl md:text-8xl mb-8" aria-hidden style={{ color: i % 2 === 1 ? '#C0A869' : 'currentColor' }}>
+                      {service.num}
+                    </p>
+                  </Parallax>
                   <h2 className="text-3xl md:text-4xl mb-6 leading-tight">{service.title}</h2>
                   <p className={`text-lg leading-relaxed ${i % 2 === 1 ? 'text-paper/70' : 'text-ink-soft'}`}>
                     {service.description}
                   </p>
                 </div>
                 <div className="md:col-span-7 md:pt-6">
-                  <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-5">
+                  <motion.ul
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-80px' }}
+                    variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+                    className="grid sm:grid-cols-2 gap-x-10 gap-y-5"
+                  >
                     {service.details.map((detail) => (
-                      <li key={detail} className={`flex gap-4 text-base leading-relaxed ${i % 2 === 1 ? 'text-paper/70' : 'text-ink-soft'}`}>
+                      <motion.li
+                        key={detail}
+                        variants={{
+                          hidden: { opacity: 0, y: 14 },
+                          visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+                        }}
+                        className={`flex gap-4 text-base leading-relaxed ${i % 2 === 1 ? 'text-paper/70' : 'text-ink-soft'}`}
+                      >
                         <span className={`flex-shrink-0 pt-1 ${i % 2 === 1 ? 'text-venom' : 'text-viper'}`}>✓</span>
                         <span>{detail}</span>
-                      </li>
+                      </motion.li>
                     ))}
-                  </ul>
+                  </motion.ul>
                 </div>
               </div>
             </div>
@@ -162,14 +183,10 @@ export default function Services() {
             <h2 className="mb-12 max-w-3xl" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.75rem)', lineHeight: 1.1 }}>
               What it costs.
             </h2>
-            <p className="text-xl text-ink-soft max-w-4xl leading-relaxed">
-              Local agencies quote $2,000–$8,000 for this work, plus a retainer to
-              keep it alive. Here, every project gets one flat number, quoted up
-              front from your scope — simple sites land in the hundreds, not
-              thousands, and apps are quoted the same way: once. And because the
-              invoice doesn&apos;t exist until you&apos;ve approved the draft, the
-              quote is the ceiling — not the opening bid.
-            </p>
+            <ScrollInk
+              className="text-xl md:text-2xl text-ink max-w-4xl leading-relaxed"
+              text="Local agencies quote $2,000–$8,000 for this work, plus a retainer to keep it alive. Here, every project gets one flat number, quoted up front from your scope — simple sites land in the hundreds, not thousands, and apps are quoted the same way: once. And because the invoice doesn't exist until you've approved the draft, the quote is the ceiling — not the opening bid."
+            />
           </motion.div>
         </div>
       </section>
