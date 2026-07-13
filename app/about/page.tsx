@@ -30,7 +30,7 @@ const timeline = [
   {
     label: 'THE PROBLEM',
     event:
-      'Watched Yuma businesses get quoted $2,000–$8,000, plus retainer lock-in, for sites that should cost a fraction of that.',
+      'Watched small businesses get quoted $2,000–$8,000, plus retainer lock-in, for sites that should cost a fraction of that.',
   },
   {
     label: 'THE BUILD',
@@ -102,9 +102,9 @@ export default function About() {
             <div className="md:col-span-9 space-y-8 text-xl text-ink-soft leading-relaxed max-w-4xl">
             <p>
               Avoria started with a pattern I couldn&apos;t unsee: small businesses
-              in Yuma getting quoted $2,000 to $8,000 for websites that
-              shouldn&apos;t cost anywhere near that — then locked into monthly
-              platform fees on top of it, forever.
+              getting quoted $2,000 to $8,000 for websites that shouldn&apos;t cost
+              anywhere near that — then locked into monthly platform fees on top
+              of it, forever.
             </p>
             <p>
               So I built the opposite. Every site I ship is hand-coded, with no

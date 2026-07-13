@@ -105,7 +105,7 @@ export default function Contact() {
               <div>
                 {/* Proof, right where the decision happens */}
                 <p className="text-[13px] text-ink-faint mb-8">
-                  <span className="text-ink">50+</span> Yuma businesses ·{' '}
+                  <span className="text-ink">50+</span> projects ·{' '}
                   <span className="text-ink">5.0★</span> average rating ·{' '}
                   <span className="text-ink">zero</span> refunds ever requested
                 </p>
@@ -330,18 +330,6 @@ export default function Contact() {
               </ul>
             </div>
 
-            <div className="border-t border-line pt-6">
-              <h3 className="text-xl mb-4">Prefer to talk it through?</h3>
-              <p className="text-ink-soft mb-4 text-sm">
-                Call or text works too — Yuma &amp; Foothills, AZ.
-              </p>
-              <a
-                href="tel:+19289163711"
-                className="text-sm font-medium text-ink hover:text-viper transition-smooth"
-              >
-                (928) 916-3711 →
-              </a>
-            </div>
           </div>
         </div>
       </section>

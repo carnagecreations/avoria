@@ -28,13 +28,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Avoria — Web Design & Custom Apps in Yuma, AZ | Pay After You Approve",
+  title: "Avoria — Web Design & Custom Apps | Pay After You Approve",
   description:
-    "Hand-coded websites and custom apps for Yuma businesses. One flat price, no subscriptions — and no invoice until you've approved a working draft.",
+    "Hand-coded websites and custom apps. One flat price, no subscriptions — and no invoice until you've approved a working draft.",
   openGraph: {
-    title: "Avoria — Web Design & Custom Apps in Yuma, AZ",
+    title: "Avoria — Web Design & Custom Apps",
     description:
-      "Hand-coded websites and custom apps that clients own outright — one flat price, and no invoice until the draft is approved. Yuma, AZ.",
+      "Hand-coded websites and custom apps that clients own outright — one flat price, and no invoice until the draft is approved.",
     type: "website",
   },
 };
@@ -45,14 +45,7 @@ const localBusinessSchema = {
   name: "Avoria",
   description:
     "Hand-coded websites and custom web applications that clients own outright — one flat price, and no invoice until the draft is approved.",
-  telephone: "+1-928-916-3711",
-  areaServed: ["Yuma, AZ", "Foothills, AZ", "Arizona"],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Yuma",
-    addressRegion: "AZ",
-    addressCountry: "US",
-  },
+  areaServed: ["US"],
   founder: {
     "@type": "Person",
     name: "Shiann Bowman",

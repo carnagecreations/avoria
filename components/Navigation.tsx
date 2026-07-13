@@ -64,12 +64,6 @@ export default function Navigation() {
         </div>
 
         <div className="flex items-center gap-7">
-          <a
-            href="tel:+19289163711"
-            className="hidden lg:block text-[13px] text-ink-faint hover:text-ink transition-smooth"
-          >
-            (928) 916-3711
-          </a>
           <Link href="/contact" className="hidden sm:inline-flex btn-primary !py-2.5 !px-6">
             Start a project
           </Link>
@@ -132,9 +126,6 @@ export default function Navigation() {
                 <Link href="/contact" className="btn-primary" onClick={() => setIsOpen(false)}>
                   Start a project
                 </Link>
-                <p className="text-[13px] text-paper/50 mt-6">
-                  (928) 916-3711 · Yuma, AZ
-                </p>
               </motion.div>
             </div>
           </motion.div>

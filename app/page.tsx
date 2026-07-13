@@ -131,7 +131,7 @@ export default function Home() {
             transition={{ duration: 1, ease: easing }}
             className="eyebrow mb-12"
           >
-            Avoria — Web design studio · Yuma, AZ
+            Avoria — Web design studio
           </motion.p>
 
           <h1 style={{ fontSize: 'clamp(3rem, 8.5vw, 8rem)', lineHeight: 0.98 }}>
@@ -164,9 +164,7 @@ export default function Home() {
               transition={{ delay: 0.55, duration: 0.9, ease: easing }}
               className="md:col-span-6 text-lg md:text-xl text-ink-soft leading-relaxed max-w-xl"
             >
-              I hand-code websites and custom apps for Yuma businesses. One flat
-              price, zero subscriptions — and the invoice doesn&apos;t exist until
-              you approve a working draft.
+              I hand-code websites and custom apps. One flat price, zero subscriptions — and the invoice doesn&apos;t exist until you approve a working draft.
             </motion.p>
 
             <motion.div

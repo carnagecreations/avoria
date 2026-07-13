@@ -18,9 +18,6 @@ export default function Footer() {
             <p className="text-paper/60 text-sm max-w-[220px]">
               Websites you own. Built to earn.
             </p>
-            <p className="eyebrow mt-5" style={{ color: 'rgba(250,249,245,0.35)' }}>
-              Yuma, AZ
-            </p>
           </div>
           <div>
             <p className="eyebrow mb-5" style={{ color: 'rgba(250,249,245,0.4)' }}>Services</p>
@@ -71,11 +68,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="tel:+19289163711" className="hover:text-paper transition-smooth">
-                  (928) 916-3711
-                </a>
-              </li>
-              <li>
                 <a href="mailto:bowman.shiann@gmail.com" className="hover:text-paper transition-smooth">
                   bowman.shiann@gmail.com
                 </a>
@@ -85,7 +77,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-paper/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-paper/35">
-          <p>© {new Date().getFullYear()} Avoria — hand-coded in Yuma, AZ</p>
+          <p>© {new Date().getFullYear()} Avoria — hand-coded</p>
           <p className="hidden md:block">This site too. Go ahead, view source.</p>
           <div className="flex gap-8">
             <Link href="/privacy" className="hover:text-paper/70 transition-smooth">
