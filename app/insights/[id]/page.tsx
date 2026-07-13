@@ -63,8 +63,7 @@ export function generateStaticParams() {
 }
 
 export default function ArticlePage({ params }: { params: { id: string } }) {
-  const id = parseInt(params.id);
-  const article = articleData[id];
+  const article = articleData[parseInt(params.id)];
 
   if (!article) {
     return (
