@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -131,6 +128,12 @@ const articles = [
     `,
   },
 ];
+
+export async function generateStaticParams() {
+  return articles.map((article) => ({
+    id: article.id.toString(),
+  }));
+}
 
 export default function ArticlePage({ params }: { params: { id: string } }) {
   const id = parseInt(params.id);
