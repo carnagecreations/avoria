@@ -396,6 +396,19 @@ export default function Work() {
                             <p className="text-viper">{project.result}</p>
                           </div>
                         </div>
+                        {project.url && (
+                          <div className="mb-6 pt-4 border-t border-line">
+                            <p className="text-ink-faint text-xs uppercase tracking-[0.1em] mb-3">Live Site</p>
+                            <a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-viper hover:text-viper-dark transition-colors font-medium"
+                            >
+                              Visit {project.url.replace('https://', '').replace('/', '')} →
+                            </a>
+                          </div>
+                        )}
                       </div>
                     ))}
                 </>
