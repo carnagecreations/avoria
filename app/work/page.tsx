@@ -14,7 +14,7 @@ const projects = [
     description:
       'A complete operational app for managing animal sanctuary care: daily animal records with 16 tabs (medical, feeding, behavior), volunteer shift scheduling, vet triage tool with AI chat, people/CRM, and public website integration. Hand-coded from intake to production.',
     stack: ['Next.js', 'Cloudflare KV', 'Custom app', 'SMS', 'AI integration'],
-    image: null,
+    image: '/images/screenshot-sanctuarybase.webp',
     url: 'https://sanctuarybase.pages.dev/',
     featured: true,
   },
@@ -64,6 +64,7 @@ const projects = [
       'An agency quoted $1,800. This site went live in six days for a fraction of it — fast, professional, and owned outright by the client.',
     stack: ['Next.js', 'Cloudflare Pages', 'Hand-coded'],
     image: '/images/screenshot-montijo.webp',
+    url: 'https://marymontijo.pages.dev/',
   },
   {
     id: 6,
@@ -75,6 +76,7 @@ const projects = [
       'A conversion-ready local business site — gallery, contact form, 95+ Lighthouse — pulling real leads within its first week live.',
     stack: ['Hand-coded', 'SEO schema', 'Contact pipeline'],
     image: '/images/screenshot-brennans.webp',
+    url: 'https://brennansyuma.com/',
   },
   {
     id: 7,
@@ -86,6 +88,7 @@ const projects = [
       'A WordPress/Divi site that took 6.2 seconds to load, rebuilt on a modern stack: Lighthouse 52 to 97, load time to 1.4 seconds, hosting bill from ~$25/mo to $0.',
     stack: ['WordPress migration', 'Core Web Vitals', '$0 hosting'],
     image: '/images/screenshot-beauties.webp',
+    url: 'https://yumareptiles.com/',
   },
   {
     id: 8,
@@ -96,7 +99,7 @@ const projects = [
     description:
       'An agency quoted $8,000. The salon got a booking app shaped to its actual workflow for a fraction of that — and no-shows dropped the first week it ran.',
     stack: ['Custom app', 'Booking engine', 'SMS reminders'],
-    image: null,
+    image: '/images/screenshot-salon-booking.webp',
   },
 ];
 
