@@ -27,7 +27,7 @@ const projects = [
     description:
       'Ceramic and dyed window tint — a local landmark rebuilt as a conversion-focused site. Service gallery, quote calculator, headlight restoration showcase, and a tint visualizer tool.',
     stack: ['Next.js', 'Cloudflare Pages', 'Contact pipeline'],
-    image: null,
+    image: '/images/screenshot-frank-son.webp',
     url: 'https://fswindowtintyuma.com/',
   },
   {
@@ -39,7 +39,7 @@ const projects = [
     description:
       'A farm sanctuary in Yuma — not a shelter, a permanent home. The site powers animal adoption listings, foster placements, volunteer sign-ups, and donation pages. Feeds directly into SanctuaryBase ops.',
     stack: ['Next.js', 'Airtable sync', 'Donation pipeline'],
-    image: null,
+    image: '/images/screenshot-saint-francis.webp',
     url: 'https://sfrescue.org/',
   },
   {
@@ -51,7 +51,7 @@ const projects = [
     description:
       'Two bakers, one haunted kitchen. A bakery site for custom boxes — classic cookies, slasher-themed pastries, a caramel puffcorn cult following, and a video showing the haunted kitchen in action.',
     stack: ['Next.js', 'Cloudflare Pages', 'Custom box builder'],
-    image: null,
+    image: '/images/screenshot-horror-ghouls.webp',
     url: 'https://horrorghouls.pages.dev/',
   },
   {
@@ -271,18 +271,6 @@ export default function Work() {
                           alt={project.title}
                           className="w-full h-full object-cover object-top"
                         />
-                      ) : project.url ? (
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full h-full bg-ink flex items-center justify-center hover:bg-ink-soft transition-colors group"
-                        >
-                          <span className="text-center">
-                            <p className="text-paper text-sm font-medium mb-2">View live site</p>
-                            <p className="text-paper/60 text-xs">{project.url.replace('https://', '').replace('/', '')}</p>
-                          </span>
-                        </a>
                       ) : (
                         <div className="w-full h-full bg-paper-deep flex items-center justify-center">
                           <span className="text-[13px] text-ink-faint">
