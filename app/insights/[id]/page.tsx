@@ -137,7 +137,7 @@ export async function generateStaticParams() {
 
 export default function ArticlePage({ params }: { params: { id: string } }) {
   const id = parseInt(params.id);
-  const article = articles.find((a) => a.id === id);
+  const article = articles.find((a) => a.id === parseInt(params.id));
 
   if (!article) {
     return (
