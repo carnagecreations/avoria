@@ -9,7 +9,7 @@ import ContourField from '@/components/ContourField';
 import Marquee from '@/components/Marquee';
 import CountUp from '@/components/CountUp';
 import Magnetic from '@/components/Magnetic';
-import RentMeter from '@/components/RentMeter';
+import VideoSection from '@/components/VideoSection';
 
 const faqs = [
   {
@@ -338,8 +338,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ THE METER — scroll-driven rent experience ============ */}
-      <RentMeter />
+      {/* ============ THE VIDEO — renting a website ============ */}
+      <VideoSection src="/videos/renting-website.mp4" headline="Renting a website" />
 
       {/* ============ PROCESS — stacking cards ============ */}
       <section className="py-40 md:py-56 border-t border-line">
