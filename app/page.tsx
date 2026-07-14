@@ -339,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* ============ THE VIDEO — renting a website ============ */}
-      <VideoSection src="/videos/renting-website.mp4" headline="Renting a website" />
+      <VideoSection videoId="WD3qwTogPes" headline="Renting a website" />
 
       {/* ============ PROCESS — stacking cards ============ */}
       <section className="py-40 md:py-56 border-t border-line">
